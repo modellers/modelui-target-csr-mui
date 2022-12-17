@@ -1,0 +1,106 @@
+{
+  "name": "eventui-component-react-material",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "source": "src/library.js",
+  "engine": {
+    "npm": "6.14.16",
+    "node": "14.19.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.87",
+    "@mui/material": "^5.8.5",
+    "@mui/styles": "^5.8.4",
+    "@mui/x-data-grid": "^5.12.1",
+    "@rjsf/core": "^4.2.0",
+    "@rjsf/material-ui": "^4.2.0",
+    "ajv": "^8.11.0",
+    "babel-loader": "^8.2.2",
+    "clsx": "^1.1.1",
+    "font-awesome": "^4.7.0",
+    "got": "^11.8.0",
+    "http2": "^3.3.7",
+    "immer": "^9.0.12",
+    "jest": "26.6",
+    "json-schema-faker": "^0.5.0-rcv.42",
+    "material-ui": "^0.20.2",
+    "md5": "^2.3.0",
+    "moment": "^2.29.1",
+    "object-hash": "^3.0.0",
+    "ol": "^6.9.0",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-scripts": "3.4.1"
+  },
+  "peerDependencies": {
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "test": "jest --env=jsdom",
+    "build": "export NODE_OPTIONS='--max-old-space-size=8192' && react-scripts build && rollup -c",
+    "dev:test": "jest --watch --env=jsdom",
+    "dev": "run-p --race dev:react build:watch",
+    "dev:react": "react-scripts start",
+    "dev:storybook": "start-storybook -p 6006 -s public",
+    "build:lib": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "NOTUSED-serve-static": "serve -s build",
+    "NOTUSED-build:storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/plugin-proposal-unicode-property-regex": "^7.17.12",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-backgrounds": "^6.1.15",
+    "@storybook/addon-console": "^1.2.2",
+    "@storybook/addon-essentials": "^6.1.15",
+    "@storybook/addon-knobs": "^6.1.15",
+    "@storybook/addon-links": "^6.1.15",
+    "@storybook/addon-storysource": "^6.1.15",
+    "@storybook/addons": "^6.1.15",
+    "@storybook/node-logger": "^6.1.15",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.15",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "jslint": "^0.12.1",
+    "lodash": "^4.17.20",
+    "npm-run-all": "^4.1.5",
+    "react-test-renderer": "^16.13.1",
+    "rollup": "^2.63.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "react-scripts": "3.4.1"
+  }
+}
