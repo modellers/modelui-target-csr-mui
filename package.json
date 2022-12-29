@@ -1,5 +1,5 @@
 {
-  "name": "eventui-component-react-material",
+  "name": "modelui-target-csr-mui",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
@@ -11,6 +11,13 @@
     "node": "14.19.0"
   },
   "dependencies": {
+    "modelui-core-runtime": "git+https://github.com/modellers/modelui-core-runtime",
+    "modelui-wrap-ace": "git+https://github.com/modellers/modelui-wrap-ace",
+    "modelui-wrap-bigcalendar ": "git+https://github.com/modellers/modelui-wrap-bigcalendar",
+    "modelui-wrap-bpmn": "git+https://github.com/modellers/modelui-wrap-bpmn",
+    "modelui-wrap-form": "git+https://github.com/modellers/modelui-wrap-form",
+    "modelui-wrap-complextree": "git+https://github.com/modellers/modelui-wrap-complextree",
+    "modelui-wrap-alicecarousel": "git+https://github.com/modellers/modelui-wrap-alicecarousel",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
@@ -21,7 +28,6 @@
     "@rjsf/core": "^4.2.0",
     "@rjsf/material-ui": "^4.2.0",
     "ajv": "^8.11.0",
-    "babel-loader": "^8.2.2",
     "clsx": "^1.1.1",
     "font-awesome": "^4.7.0",
     "got": "^11.8.0",

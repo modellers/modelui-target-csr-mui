@@ -9,6 +9,7 @@ import { StateManager } from './event/StateManager';
 import ComponentManager from './components/Layout/Manager';
 
 import registerComponents from './components/Components';
+import registerPluginComponents from './components/Plugins';
 import { registerEventDebugging, registerEventApp } from './event/CommonEvents';
 
 import { ThemeProvider } from '@mui/material/styles';
@@ -29,7 +30,9 @@ class AppBase extends React.Component {
   constructor(props) {
     super(props);
     // register components
-    registerComponents();
+    const component_manager = ComponentManager.getInstance();
+    registerComponents(component_manager);
+    registerPluginComponents(component_manager);
 
     // clear all
     EventManager.getInstance().clearAll();
