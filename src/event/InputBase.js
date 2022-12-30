@@ -95,7 +95,7 @@ export class StateInput extends StateInstance {
       submit: {
         schema: {},
         handler: (obj) => {
-          EventManager.getInstance().addEvent(this.props.id, 'submitting', obj, null);
+          this.triggerEvent('submitting', obj, null);
           this.getActionState('submit', function (change) {
             const update = self.alterState(change);
             EventManager.getInstance().addEvent(self.props.id, 'submitted', update.data, null);
@@ -108,7 +108,7 @@ export class StateInput extends StateInstance {
           const change = { disabled: false }
           self.alterState(change);
           if (this.updateView("enable", obj, obj, this.state.data)) {
-            EventManager.getInstance().addEvent(this.props.id, 'enabled', change, null);
+            this.triggerEvent('enabled', change, null);
           }
         }
       },
@@ -118,7 +118,7 @@ export class StateInput extends StateInstance {
           const change = { disabled: true }
           self.alterState(change);
           if (this.updateView("disable", obj, obj, this.state.data)) {
-            EventManager.getInstance().addEvent(this.props.id, 'disabled', change, null);
+            this.triggerEvent('disabled', change, null);
           }
         }
       },
@@ -127,11 +127,11 @@ export class StateInput extends StateInstance {
         handler: (obj) => {
           const change = { data: { value: "" } } //getSchemaDefaults(this.state.data.schema || this.state.schema);
           const update = self.alterState(change);
-          EventManager.getInstance().addEvent(this.props.id, 'clearing', change, {});
+          this.triggerEvent('clearing', change, {});
           if (this.updateView("clear", obj, obj, update)) {
-            EventManager.getInstance().addEvent(this.props.id, 'cleared', update.data, null);
+            this.triggerEvent('cleared', update.data, null);
           }
-          EventManager.getInstance().addEvent(this.props.id, 'changed', update.data, null);
+          this.triggerEvent('changed', update.data, null);
         }
       },
       populate: {
@@ -140,9 +140,9 @@ export class StateInput extends StateInstance {
           const change = { data: { value: obj.value, id: obj.id } }
           self.alterState(change);
           if (this.updateView("populate", obj, obj, this.state.data)) {
-            EventManager.getInstance().addEvent(this.props.id, 'populated', obj, null);
+            this.triggerEvent('populated', obj, null);
           }
-          EventManager.getInstance().addEvent(this.props.id, 'changed', obj, null);
+          this.triggerEvent('changed', obj, null);
         }
       },
       replace: {
@@ -151,9 +151,9 @@ export class StateInput extends StateInstance {
           const replaced = { ...this.state, data: { ...obj, id: obj.id, value: obj.value || this.state.data.value, schema: obj.schema || this.state.data.schema } }
           self.setState(replaced);
           if (this.updateView("replace", obj, obj, this.state.data)) {
-            EventManager.getInstance().addEvent(this.props.id, 'replaced', obj, null);
+            this.triggerEvent('replaced', obj, null);
           }
-          EventManager.getInstance().addEvent(this.props.id, 'changed', obj, null);
+          this.triggerEvent('changed', obj, null);
         }
       }
     }

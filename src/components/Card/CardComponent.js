@@ -148,7 +148,7 @@ function CardComponentMedia(props) {
   return (
     <CardMedia onClick={event => {
       if (click_event_data) {
-        EventManager.getInstance().addEvent(props.data.component_id, 'selected', click_event_data, null);
+        // FIXME: with some version of this.triggerEvent EventManager.getInstance().addEvent(props.data.component_id, 'selected', click_event_data, null);
       }
     }} key={props.id + "media"}
       className={props.classes}

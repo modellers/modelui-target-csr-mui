@@ -1,7 +1,10 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 
 // components
 import ImageComponent from './ImageComponent';
@@ -12,7 +15,7 @@ import { triggers, events, config } from './ImageComponent'
 export default {
   title: 'Components/Image',
   component: ImageComponent,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const ImageBasic = (args) => {
@@ -47,7 +50,9 @@ export const ImageBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events, {
         triggers: {
           push: function () {
             return {

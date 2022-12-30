@@ -1,7 +1,11 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
+
 // test data
 import { TestTextLatin_SummaryArray } from '../../test/data/TestText.js'
 
@@ -15,7 +19,7 @@ import { triggers, events, config } from './ContainerComponent'
 export default {
   title: 'Components/Container',
   component: Container,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const Basic = (args) => {
@@ -47,7 +51,9 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Container {...props} />
     </div>
   );
@@ -69,7 +75,9 @@ export const BasicText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Container {...props} />
     </div>
   );

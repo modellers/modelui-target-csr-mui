@@ -1,7 +1,10 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 
 // components
 import { Tree } from './Tree';
@@ -13,7 +16,7 @@ import { example_generators, example_tree_array_items } from './data';
 export default {
   title: 'Components/Tree',
   component: Tree,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 
@@ -27,7 +30,9 @@ export const Basic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, { triggers: example_generators })}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events, { triggers: example_generators })}
       <Tree {...props} />
     </div>
   );

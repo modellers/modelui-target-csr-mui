@@ -163,10 +163,10 @@ class SnackbarComponent extends Component {
     if (open) {
       state.message = obj.title || '!';
       this.setState(state);
-      EventManager.getInstance().addEvent(this.props.id, this.events['showing'].id, { ...state }, null);
+      this.triggerEvent(this.events['showing'].id, { ...state }, null);
     } else {
       this.setState({ ...this.state, ...{ open: open } });
-      EventManager.getInstance().addEvent(this.props.id, this.events['closed'].id, { ...state }, null);
+      this.triggerEvent(this.events['closed'].id, { ...state }, null);
     }
 
   };
@@ -175,7 +175,7 @@ class SnackbarComponent extends Component {
     if (reason === 'clickaway') {
       return;
     }
-    EventManager.getInstance().addEvent(this.props.id, this.events['closing'].id, { ...this.state }, null);
+    this.triggerEvent(this.events['closing'].id, { ...this.state }, null);
     this.showSnackbar(this.state, false);
   }
 

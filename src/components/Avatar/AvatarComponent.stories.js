@@ -3,6 +3,8 @@ import React from 'react';
 // test utils
 import { util } from 'modelui-core-runtime'
 import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 
 // components
 import AvatarComponent from './AvatarComponent';

@@ -5,8 +5,7 @@ import TextField from '@mui/material/TextField'; // https://material-ui.com/comp
 import { withStyles } from '@mui/styles';
 // event handler
 import EventManager from '../../event/Event';
-// input base
-import { StateInput, events as inputEvents, triggers as inputTriggers, InputBase } from '../../event/InputBase';
+// state
 import { structs } from 'modelui-core-runtime';
 
 export const events = structs.InputBase.events;
@@ -136,12 +135,12 @@ class TextfieldComponent extends structs.InputBase.InputBase {
 
   onChanged = (evt) => {
     // schema: formatData (only if valid)
-    EventManager.getInstance().addEvent(this.props.id, "changed", { value: evt.target.value }, evt);
+    this.triggerEvent("changed", { value: evt.target.value }, evt);
   }
 
   onKeyUp = (evt) => {
     if (evt.key === "Enter") {
-      EventManager.getInstance().addEvent(this.props.id, "submitted", { value: evt.target.value }, evt);
+      this.triggerEvent("submitted", { value: evt.target.value }, evt);
     }
   }
 

@@ -242,7 +242,7 @@ export class StateList extends StateInstance {
       submit: {
         schema: {},
         handler: (objs) => { // submit
-          EventManager.getInstance().addEvent(this.props.id, 'submitted', { count: this.state.data.length, items: this.state.data }, {});
+          this.triggerEvent('submitted', { count: this.state.data.length, items: this.state.data }, {});
         }
       },
       replace: {
@@ -251,13 +251,13 @@ export class StateList extends StateInstance {
           const data_state = this.state.data || [];
           // want an array
           if (!Array.isArray(objs)) { objs = [objs]; }
-          EventManager.getInstance().addEvent(this.props.id, 'replacing', { count: data_state.length, old: data_state, new: objs }, {});
+          this.triggerEvent('replacing', { count: data_state.length, old: data_state, new: objs }, {});
           let data = objs;
           if (this.updateView("replace", [], [], data)) {
             this.setState({ ...this.state, data: data });
           }
-          EventManager.getInstance().addEvent(this.props.id, 'replaced', { count: data.length, items: data }, {});
-          EventManager.getInstance().addEvent(this.props.id, 'changed', { count: data.length, items: data }, {});
+          this.triggerEvent('replaced', { count: data.length, items: data }, {});
+          this.triggerEvent('changed', { count: data.length, items: data }, {});
         }
       },
       push: {
@@ -284,15 +284,15 @@ export class StateList extends StateInstance {
           let data = [...data_state, ...data_added];
           // notify parent class of push event
           try {
-            EventManager.getInstance().addEvent(this.props.id, 'pushing', data_added, {});
+            this.triggerEvent('pushing', data_added, {});
             if (this.updateView("push", data_added, data_updated, data)) {
               this.setState({ ...this.state, ...selected, data: data, });
             }
           } catch (e) {
             this.exceptionCatched("push", e);
           }
-          EventManager.getInstance().addEvent(this.props.id, 'pushed', { count: data.length, items: data, added: data_added }, {});
-          EventManager.getInstance().addEvent(this.props.id, 'changed', { count: data.length, items: data, added: data_added, updated: data_updated }, {});
+          this.triggerEvent('pushed', { count: data.length, items: data, added: data_added }, {});
+          this.triggerEvent('changed', { count: data.length, items: data, added: data_added, updated: data_updated }, {});
           // FIXME: this.showSelected(selected.selectedId, selected.selectedIndex || -1);
         }
       },
@@ -322,7 +322,7 @@ export class StateList extends StateInstance {
           if (this.updateView("push_front", [], data_updated, data)) {
             this.setState({ ...this.state, ...selected, data: data });
           }
-          EventManager.getInstance().addEvent(this.props.id, 'changed', { count: data.length, items: data }, {});
+          this.triggerEvent('changed', { count: data.length, items: data }, {});
           // FIXME: this.showSelected(selected.selectedId, selected.selectedIndex || -1);
         }
       },
@@ -353,8 +353,8 @@ export class StateList extends StateInstance {
             this.exceptionCatched("delete", e);
           }
 
-          EventManager.getInstance().addEvent(this.props.id, 'changed', { count: data.length, items: data, deleted: deleting }, {});
-          EventManager.getInstance().addEvent(this.props.id, 'deleted', { count: deleting.length, items: data, deleted: deleting }, {});
+          this.triggerEvent('changed', { count: data.length, items: data, deleted: deleting }, {});
+          this.triggerEvent('deleted', { count: deleting.length, items: data, deleted: deleting }, {});
         }
       },
       pop: {
@@ -364,7 +364,7 @@ export class StateList extends StateInstance {
             this.state.data.splice(this.state.data.length - 1, 1)
             if (this.updateView("pop", [], [], this.state.data)) {
               this.setState({ ...this.state, data: this.state.data });
-              EventManager.getInstance().addEvent(this.props.id, 'changed', { count: this.state.data.length, items: this.state.data }, {});
+              this.triggerEvent('changed', { count: this.state.data.length, items: this.state.data }, {});
             }
           }
         }
@@ -375,7 +375,7 @@ export class StateList extends StateInstance {
           this.state.data.splice(0, 1);
           if (this.updateView("pop_front", [], [], this.state.data)) {
             this.setState({ ...this.state, data: this.state.data });
-            EventManager.getInstance().addEvent(this.props.id, 'changed', { count: this.state.data.length, items: this.state.data }, {});
+            this.triggerEvent('changed', { count: this.state.data.length, items: this.state.data }, {});
           }
         }
       },
@@ -408,9 +408,9 @@ export class StateList extends StateInstance {
           });
           // for now we just replace the state
           this.setState({ ...this.state, data: this.state.data })
-          EventManager.getInstance().addEvent(this.props.id, 'selecting', objs, null);
+          this.triggerEvent('selecting', objs, null);
           if (this.updateView("select", objs, data_updated, this.state)) {
-            EventManager.getInstance().addEvent(this.props.id, 'selected', selected, null);
+            this.triggerEvent('selected', selected, null);
           }
 
         }
@@ -418,10 +418,10 @@ export class StateList extends StateInstance {
       clear: {
         schema: {},
         handler: (obj) => {
-          EventManager.getInstance().addEvent(this.props.id, 'clearing', { count: this.state.data.length, items: this.state.data }, {});
+          this.triggerEvent('clearing', { count: this.state.data.length, items: this.state.data }, {});
           this.setState({ ...this.state, data: [] });
-          EventManager.getInstance().addEvent(this.props.id, 'cleared', { count: this.state.data.length, items: this.state.data }, {});
-          EventManager.getInstance().addEvent(this.props.id, 'changed', { count: this.state.data.length, items: this.state.data }, {});
+          this.triggerEvent('cleared', { count: this.state.data.length, items: this.state.data }, {});
+          this.triggerEvent('changed', { count: this.state.data.length, items: this.state.data }, {});
           this.updateView("clear", [], [], []);
         }
       }

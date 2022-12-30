@@ -1,7 +1,10 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 
 // components
 import TextfieldComponent from './TextfieldComponent';
@@ -12,7 +15,7 @@ import { triggers, events, config } from './TextfieldComponent'
 export default {
   title: 'Components/Textfield',
   component: TextfieldComponent,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const TextfieldBasic = (args) => {
@@ -34,7 +37,8 @@ export const TextfieldBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
         props, triggers, events,
         { triggers: { populate: { value: "My new populated value" } } }
       )}
