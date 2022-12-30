@@ -11716,7 +11716,7 @@ json-schema-compare@^0.2.2:
   dependencies:
     lodash "^4.17.4"
 
-json-schema-faker@^0.5.0-rcv.42, json-schema-faker@^0.5.0-rcv.44:
+json-schema-faker@0.5.0-rcv.46, json-schema-faker@^0.5.0-rcv.44:
   version "0.5.0-rcv.46"
   resolved "https://registry.yarnpkg.com/json-schema-faker/-/json-schema-faker-0.5.0-rcv.46.tgz#5f9eff94f463c337a361044a460cc46797ceb053"
   integrity sha512-Q+sGrxptZfezwm7M9W9VmHT9E8s5fWPCaRC4J2zUjb3CmDsxokiCBdHdS/psu91Tafc/ITv+GtIztGzUVT2zIg==

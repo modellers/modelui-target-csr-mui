@@ -1,4 +1,4 @@
-import jsf from 'json-schema-faker';
+import { JSONSchemaFaker } from "json-schema-faker";
 import MD5 from 'object-hash';
 
 export const generateIdentifier = () => {
@@ -6,5 +6,5 @@ export const generateIdentifier = () => {
 }
 
 export const getSchemaGeneratedData = (schema) => {
-    return jsf.generate(schema);
+    return JSONSchemaFaker.generate(schema);
 }

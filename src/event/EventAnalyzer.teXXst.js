@@ -2,7 +2,7 @@ import { EventAnalyzer } from './EventAnalyzer';
 import { StateManager } from './StateManager';
 import ComponentManager from '../components/Layout/Manager';
 import { registerList } from '../components/List/List';
-import { registerEventApp } from '../event/CommonEvents';
+import { registerEventApp } from './CommonEvents';
 
 const simple_schema = {
   "$id": "simple_schema",
