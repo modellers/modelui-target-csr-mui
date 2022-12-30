@@ -1,7 +1,11 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
+
 // test data
 import { TestTextLatin_SummaryArray } from '../../test/data/TestText.js'
 // components
@@ -14,7 +18,7 @@ import { triggers, events, config } from './AccordionComponent'
 export default {
   title: 'Components/Accordion',
   component: Accordion,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const Basic = (args) => {
@@ -46,7 +50,9 @@ export const Basic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Accordion {...props} />
     </div>
   );
@@ -66,7 +72,9 @@ export const AccordionText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Accordion {...props} />
     </div>
   );

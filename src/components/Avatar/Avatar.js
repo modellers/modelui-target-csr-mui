@@ -4,7 +4,7 @@ import AvatarComponent, { events, triggers, config } from './AvatarComponent'
 
 export function Avatar(props) {
     // lets enumerate schema to extract uiSchema and validation
-    return <AvatarComponent {...props} />
+    return (<AvatarComponent {...props} />);
 
 }
 

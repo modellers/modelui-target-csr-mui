@@ -5,11 +5,11 @@ import TextField from '@mui/material/TextField'; // https://material-ui.com/comp
 import { withStyles } from '@mui/styles';
 // event handler
 import EventManager from '../../event/Event';
-// input base
-import { StateInput, events as inputEvents, triggers as inputTriggers, InputBase } from '../../event/InputBase';
+// state
+import { structs } from 'modelui-core-runtime';
 
-export const events = inputEvents;
-export const triggers = inputTriggers;
+export const events = structs.InputBase.events;
+export const triggers = structs.InputBase.triggers;
 
 export const options = {
   "id": "textfield",
@@ -62,13 +62,13 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateInput
+  state: structs.InputBase.StateInput
 }
 
 const style = (theme) => ({ // https://material-ui.com/styles/basics/
 });
 
-class TextfieldComponent extends InputBase {
+class TextfieldComponent extends structs.InputBase.InputBase {
   /**
    * Used to manage internal state of avatars
    */
@@ -135,12 +135,12 @@ class TextfieldComponent extends InputBase {
 
   onChanged = (evt) => {
     // schema: formatData (only if valid)
-    EventManager.getInstance().addEvent(this.props.id, "changed", { value: evt.target.value }, evt);
+    this.triggerEvent("changed", { value: evt.target.value }, evt);
   }
 
   onKeyUp = (evt) => {
     if (evt.key === "Enter") {
-      EventManager.getInstance().addEvent(this.props.id, "submitted", { value: evt.target.value }, evt);
+      this.triggerEvent("submitted", { value: evt.target.value }, evt);
     }
   }
 

@@ -186,12 +186,12 @@ export class StateObject extends StateInstance {
     }
 
     raiseSuccessEvent = (event_name, data, evt) => {
-        EventManager.getInstance().addEvent(this.props.id, event_name, data, evt);
+        this.triggerEvent(event_name, data, evt);
     };
 
     raiseFailureEvent = (event_name, data, evt) => {
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
-        EventManager.getInstance().addEvent(this.props.id, event_name, data, evt);
+        this.triggerEvent(event_name, data, evt);
     };
 
     isValidDocumentSchema = (doc, schema) => {

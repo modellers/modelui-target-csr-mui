@@ -3,10 +3,10 @@ import React from 'react';
 import { withStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
 
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+import { structs } from 'modelui-core-runtime';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 export const options = {
   "id": "texts",
@@ -84,13 +84,13 @@ export const config = {
   contains: {
     "text": item
   },
-  state: StateList
+  state: structs.ListBase.StateList
 }
 
 const style = theme => ({
 });
 
-class TextComponent extends ListBase {
+class TextComponent extends structs.ListBase.ListBase {
 
   constructor(props) {
 

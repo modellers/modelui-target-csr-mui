@@ -1,6 +1,6 @@
 
 // Managers and factories
-import ComponentManager from './Layout/Manager'
+import { layout } from 'modelui-core-runtime';
 
 // Components
 import { register as registerAvatar } from './Avatar/Avatar';
@@ -18,12 +18,13 @@ import { registerTree } from './Tree/Tree';
 export default function registerComponents(component_manager) {
 
     if (!component_manager) {
-        component_manager = ComponentManager.getInstance();
+        component_manager = layout.Manager.ComponentManager.getInstance();
     }
-
+    /*
     if (component_manager.constructor.name !== 'ComponentManager') {
-        throw "Constructor must be component manager";
+        throw `Constructor must be component manager. Got type ${component_manager.constructor.name}`;
     }
+    */
 
     registerView(component_manager);
     registerCard(component_manager);

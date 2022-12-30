@@ -7,10 +7,10 @@ import TreeItem from '@mui/lab/TreeItem';
 // styles
 import { withStyles } from '@mui/styles';
 
-import { StateTree, TreeBase, events as baseEvents, triggers as baseTriggers } from './TreeBase'
+import { structs } from 'modelui-core-runtime';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.TreeBase.events;
+export const triggers = structs.TreeBase.triggers;
 
 export const options = {
   "id": "tree",
@@ -42,7 +42,7 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateTree
+  state: structs.TreeBase.StateTree
 }
 
 const style = (theme) => ({
@@ -51,7 +51,7 @@ const style = (theme) => ({
   },
 });
 
-class TreeComponent extends TreeBase {
+class TreeComponent extends structs.TreeBase.TreeBase {
   /**
    * Used to manage internal state of avatars
    */

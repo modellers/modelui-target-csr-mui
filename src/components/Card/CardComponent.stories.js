@@ -1,7 +1,11 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
+
 // components
 import { Card } from './Card';
 import { triggers, events, config } from './CardComponent'
@@ -10,7 +14,7 @@ import { triggers, events, config } from './CardComponent'
 export default {
   title: 'Components/Cards',
   component: Card,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const TitledCard = (args) => {
@@ -36,7 +40,9 @@ export const TitledCard = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Card  {...props} />
     </div>
   );
@@ -99,7 +105,9 @@ export const TitledCardWithActions = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Card  {...props} />
     </div>
   );
@@ -134,7 +142,9 @@ export const MediaCard = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Card  {...props} />
     </div>
   );

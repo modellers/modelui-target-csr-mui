@@ -3,7 +3,6 @@ import EventHandler from '../../event/Event';
 import { StateManager } from '../../event/StateManager';
 import registerComponents from '../../components/Components';
 import { action } from '@storybook/addon-actions';
-import EventManager from '../../event/Event';
 import ComponentManager from '../../components/Layout/Manager';
 
 const print_config = {

@@ -1,8 +1,9 @@
 // https://material-ui.com/components/autocomplete/
 // styles
 import { withStyles } from '@mui/styles';
-
+// state
 import { StateGrid, GridComponent, events as baseEvents, triggers as baseTriggers } from './GridComponent'
+
 export const events = baseEvents;
 export const triggers = baseTriggers;
 

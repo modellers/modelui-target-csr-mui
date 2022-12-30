@@ -3,8 +3,12 @@
  * Testing DD events and actions integrety
  */
 
-import { events, triggers, config } from './MemoryStorage'
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+import MemoryStorage, { events, triggers, config } from './MemoryStorage'
+// utils
+import { util } from 'modelui-core-runtime';
+import { layout } from 'modelui-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('Some test', () => {
   test('Test', () => { });
@@ -12,7 +16,10 @@ describe('Some test', () => {
 
 /*
 describe('MemoryStorage protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,
     config,
     [
       'submit',
@@ -40,9 +47,11 @@ describe('MemoryStorage protocol', () => {
   );
   tests.forEach((t) => { test(t.title, t.test); });
 });
-/*
+
 describe('MemoryStorage register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
     'memory',
     MemoryStorage,
     triggers,

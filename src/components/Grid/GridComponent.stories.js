@@ -1,7 +1,11 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
+
 // test data
 import { TestTextLatin_SummaryArray, TestTextLatin_LoremIpsumDolorArray, TestTextLatin_IpsumDolorArray, TestTextLatin_PellentesquePorttitorArray, TestTextLatin_MaecenasArray } from '../../test/data/TestText.js'
 // components
@@ -14,7 +18,7 @@ import { triggers, events, config } from './GridComponent'
 export default {
   title: 'Components/Grid',
   component: Grid,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const GridBasic = (args) => {
@@ -42,7 +46,9 @@ export const GridBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Grid {...props} />
     </div>
   );
@@ -68,7 +74,9 @@ export const GridText = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Grid {...props} />
     </div>
   );
@@ -141,7 +149,9 @@ export const GridGrid = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <Grid {...props} />
     </div>
   );

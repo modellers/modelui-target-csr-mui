@@ -1,7 +1,10 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 
 // components
 import TextComponent from './TextComponent';
@@ -12,7 +15,7 @@ import { triggers, events, config } from './TextComponent'
 export default {
   title: 'Components/Text',
   component: TextComponent,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const TextBasic = (args) => {
@@ -45,7 +48,9 @@ export const TextBasic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events, {
         triggers: {
           push: function () { return { id: 'id' + parseInt(Math.random() * 1000), 'typography': 'text', text: 'Some interesting value ' + parseInt(Math.random() * 1000) } },
           push_front: function () { return { id: 'id' + parseInt(Math.random() * 1000), 'typography': 'text', text: 'Some interesting value ' + parseInt(Math.random() * 1000) } },

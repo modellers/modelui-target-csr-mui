@@ -193,7 +193,7 @@ export class StateOMG extends StateInstance {
       submit: {
         schema: {},
         handler: (obj) => {
-          EventManager.getInstance().addEvent(this.props.id, 'submitting', obj, null);
+          this.triggerEvent('submitting', obj, null);
           this.getActionState('submit', function (change) {
             const update = self.alterState(change);
             EventManager.getInstance().addEvent(self.props.id, 'submitted', update.data, null);
@@ -204,10 +204,10 @@ export class StateOMG extends StateInstance {
         schema: {},
         handler: (obj) => {
           const change = { disabled: false }
-          EventManager.getInstance().addEvent(this.props.id, 'enabled', change, null);
+          this.triggerEvent('enabled', change, null);
           self.alterState(change);
           if (this.updateView("enable", obj, obj, this.state.data)) {
-            EventManager.getInstance().addEvent(this.props.id, 'enabled', change, null);
+            this.triggerEvent('enabled', change, null);
           }
         }
       },
@@ -217,7 +217,7 @@ export class StateOMG extends StateInstance {
           const change = { disabled: true }
           self.alterState(change);
           if (this.updateView("disable", obj, obj, this.state.data)) {
-            EventManager.getInstance().addEvent(this.props.id, 'disabled', change, null);
+            this.triggerEvent('disabled', change, null);
           }
         }
       },
@@ -227,11 +227,11 @@ export class StateOMG extends StateInstance {
           const selected = obj.ids; // TODO: handle this generically 
           const change = { selected: selected }
           const update = self.alterState(change);
-          EventManager.getInstance().addEvent(this.props.id, 'selecting', change, {});
+          this.triggerEvent('selecting', change, {});
           if (this.updateView("select", obj, change, update)) {
-            EventManager.getInstance().addEvent(this.props.id, 'selected', update.selected, null);
+            this.triggerEvent('selected', update.selected, null);
           }
-          EventManager.getInstance().addEvent(this.props.id, 'changed', update.selected, null);
+          this.triggerEvent('changed', update.selected, null);
         }
       },
       clear: {
@@ -239,23 +239,23 @@ export class StateOMG extends StateInstance {
         handler: (obj) => {
           const change = { selected: [], data: { xml: "" } }
           const update = self.alterState(change);
-          EventManager.getInstance().addEvent(this.props.id, 'clearing', update, {});
+          this.triggerEvent('clearing', update, {});
           if (this.updateView("clear", obj, change, update)) {
-            EventManager.getInstance().addEvent(this.props.id, 'cleared', update.data, null);
+            this.triggerEvent('cleared', update.data, null);
           }
-          EventManager.getInstance().addEvent(this.props.id, 'changed', update.data, null);
+          this.triggerEvent('changed', update.data, null);
         }
       },
       populate: {
         schema: {},
         handler: (obj) => {
           const change = { data: obj }
-          EventManager.getInstance().addEvent(this.props.id, 'populating', change.data, null);
+          this.triggerEvent('populating', change.data, null);
           const update = self.alterState(change);
           if (this.updateView("populate", obj, update, update.data)) {
-            EventManager.getInstance().addEvent(this.props.id, 'populated', update.data, null);
+            this.triggerEvent('populated', update.data, null);
           }
-          EventManager.getInstance().addEvent(this.props.id, 'changed', update.data, null);
+          this.triggerEvent('changed', update.data, null);
         }
       }
     }

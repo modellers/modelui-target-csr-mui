@@ -3,8 +3,10 @@
 import { withStyles } from '@mui/styles';
 
 import { StateGrid, GridComponent, events as baseEvents, triggers as baseTriggers } from './GridComponent'
+
 export const events = baseEvents;
 export const triggers = baseTriggers;
+
 
 export const options = {
   "id": "grid-columns",

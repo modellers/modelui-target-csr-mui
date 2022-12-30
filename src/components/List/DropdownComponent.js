@@ -7,9 +7,10 @@ import Box from '@mui/material/Box';
 // styles
 import { withStyles } from '@mui/styles';
 
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
-export const events = baseEvents;
-export const triggers = baseTriggers;
+import { structs } from 'modelui-core-runtime';
+
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 export const options = {
   "id": "dropdown",
@@ -82,7 +83,7 @@ export const config = {
     "dropdown-item": item
   },
   options: options,
-  state: StateList
+  state: structs.ListBase.StateList
 }
 
 const style = (theme) => ({
@@ -97,7 +98,7 @@ const style = (theme) => ({
   avatar: undefined
 });
 
-class DropdownComponent extends ListBase {
+class DropdownComponent extends structs.ListBase.ListBase {
   /**
    * Used to manage internal state of avatars
    */

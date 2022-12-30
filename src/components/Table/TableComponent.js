@@ -10,11 +10,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+// state
+import { structs } from 'modelui-core-runtime';
 
-import { StateSchemaList, ListSchemaBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListSchemaBase'
-
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListSchemaBase.events;
+export const triggers = structs.ListSchemaBase.triggers;
 
 export const options = {
   "id": "table",
@@ -60,7 +60,7 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateSchemaList
+  state: structs.ListSchemaBase.StateSchemaList
 }
 
 // https://mui.com/material-ui/api/table-row/#css
@@ -70,7 +70,7 @@ const style = (theme) => ({
   }
 });
 
-class TableComponent extends ListSchemaBase {
+class TableComponent extends structs.ListSchemaBase.ListSchemaBase {
   /**
    * Used to manage internal state of avatars
    */

@@ -8,9 +8,8 @@ import CardActions from '@mui/material/CardActions';
 import { withStyles } from '@mui/styles';
 // DD components
 import { renderContent } from '../../util/ComponentUtil';
-// event handler
-import EventManager from '../../event/Event';
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+// state
+import { structs } from 'modelui-core-runtime';
 // utils
 import { isObject } from '../../util/ObjUtil';
 
@@ -19,8 +18,8 @@ import { isObject } from '../../util/ObjUtil';
 // import { LayoutRender } from '../Layout/Layout';
 // import CardContent from '@mui/material/CardContent';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 export const options = {
   "id": "cards",
@@ -45,7 +44,7 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateList
+  state: structs.ListBase.StateList
 }
 
 const style = theme => ({
@@ -149,7 +148,7 @@ function CardComponentMedia(props) {
   return (
     <CardMedia onClick={event => {
       if (click_event_data) {
-        EventManager.getInstance().addEvent(props.data.component_id, 'selected', click_event_data, null);
+        // FIXME: with some version of this.triggerEvent EventManager.getInstance().addEvent(props.data.component_id, 'selected', click_event_data, null);
       }
     }} key={props.id + "media"}
       className={props.classes}
@@ -195,7 +194,7 @@ function CardComponentRender(card_id, item, classes, view, component_id) {
   return <Card id={card_id} key={card_id} className={classes.root} >{content}</Card>;
 }
 
-class CardComponent extends ListBase {
+class CardComponent extends structs.ListBase.ListBase {
 
   constructor(props) {
     super(props);

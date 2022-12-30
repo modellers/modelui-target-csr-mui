@@ -1,7 +1,10 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 
 // components
 import { Table } from './Table';
@@ -15,7 +18,7 @@ import { got_characters_data, got_characters_schema, gotCharactersDataMore } fro
 export default {
   title: 'Components/Table',
   component: Table,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 const schema_id_title_test = {
@@ -61,7 +64,9 @@ export const TableBasic = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events, {
         triggers: {
           replace: {
             items: [{
@@ -97,7 +102,9 @@ export const TableColumns = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),
@@ -128,7 +135,9 @@ export const TableReplace = (args) => {
 
   return (
     <div>
-      {prepStoryComponent(props, triggers, events, {
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events, {
         triggers: {
           push: gotCharactersDataMore(),
           push_front: gotCharactersDataMore(),

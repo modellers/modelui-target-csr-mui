@@ -1,7 +1,10 @@
 import React from 'react';
 
 // test utils
-import { prepStoryComponent, createStoryArgumentTypesFromSchema } from '../../test/utils/StoryUtil'
+import { util } from 'modelui-core-runtime'
+import { layout } from 'modelui-core-runtime';
+import { action } from '@storybook/addon-actions'
+import registerComponents from '../Components';
 
 // components
 import AvatarComponent from './AvatarComponent';
@@ -12,7 +15,7 @@ import { triggers, events, config } from './AvatarComponent'
 export default {
   title: 'Components/Avatar',
   component: AvatarComponent,
-  argTypes: createStoryArgumentTypesFromSchema(config.options)
+  argTypes: util.StoryUtil.createLayoutViewArgumentTypes(config)
 };
 
 export const AvatarBasic = (args) => {
@@ -43,7 +46,9 @@ export const AvatarBasic = (args) => {
   }
   return (
     <div>
-      {prepStoryComponent(props, triggers, events)}
+      {util.StoryUtil.prepStoryComponent(
+        layout.Manager.ComponentManager.getInstance(), action, registerComponents,
+        props, triggers, events)}
       <AvatarComponent {...props} />
     </div>
   );

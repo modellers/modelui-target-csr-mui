@@ -28,7 +28,7 @@
     "http2": "^3.3.7",
     "immer": "^9.0.12",
     "jest": "26.6",
-    "json-schema-faker": "^0.5.0-rcv.42",
+    "json-schema-faker": "0.5.0-rcv.46",
     "material-ui": "^0.20.2",
     "md5": "^2.3.0",
     "modelui-core-runtime": "git+https://github.com/modellers/modelui-core-runtime",

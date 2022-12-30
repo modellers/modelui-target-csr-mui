@@ -5,10 +5,10 @@ import { withStyles } from '@mui/styles';
 // material ui table
 import { DataGrid } from '@mui/x-data-grid';
 
-import { StateSchemaList, ListSchemaBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListSchemaBase'
+import { structs } from 'modelui-core-runtime';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListSchemaBase.events;
+export const triggers = structs.ListSchemaBase.triggers;
 
 export const options = {
   "id": "datagrid",
@@ -54,7 +54,7 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateSchemaList
+  state: structs.ListSchemaBase.StateSchemaList
 }
 
 // https://mui.com/material-ui/api/table-row/#css
@@ -64,7 +64,7 @@ const style = (theme) => ({
   }
 });
 
-class DataGridComponent extends ListSchemaBase {
+class DataGridComponent extends structs.ListSchemaBase.ListSchemaBase {
   /**
    * Used to manage internal state of avatars
    */
