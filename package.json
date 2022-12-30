@@ -21,6 +21,7 @@
     "@rjsf/core": "^4.2.0",
     "@rjsf/material-ui": "^4.2.0",
     "ajv": "^8.11.0",
+    "axios": "^1.2.2",
     "clsx": "^1.1.1",
     "font-awesome": "^4.7.0",
     "got": "^11.8.0",
@@ -30,6 +31,13 @@
     "json-schema-faker": "^0.5.0-rcv.42",
     "material-ui": "^0.20.2",
     "md5": "^2.3.0",
+    "modelui-core-runtime": "git+https://github.com/modellers/modelui-core-runtime",
+    "modelui-wrap-ace": "git+https://github.com/modellers/modelui-wrap-ace",
+    "modelui-wrap-alicecarousel": "git+https://github.com/modellers/modelui-wrap-alicecarousel",
+    "modelui-wrap-bigcalendar": "git+https://github.com/modellers/modelui-wrap-bigcalendar",
+    "modelui-wrap-bpmn": "git+https://github.com/modellers/modelui-wrap-bpmn",
+    "modelui-wrap-complextree": "git+https://github.com/modellers/modelui-wrap-complextree",
+    "modelui-wrap-form": "git+https://github.com/modellers/modelui-wrap-form",
     "moment": "^2.29.1",
     "object-hash": "^3.0.0",
     "ol": "^6.9.0",
@@ -96,10 +104,10 @@
     "jslint": "^0.12.1",
     "lodash": "^4.17.20",
     "npm-run-all": "^4.1.5",
+    "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1",
     "rollup": "^2.63.0",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "react-scripts": "3.4.1"
+    "rollup-plugin-peer-deps-external": "^2.2.4"
   }
 }

@@ -53,7 +53,7 @@ class AppBase extends React.Component {
       type: "layout",
       schema: {},
       config: {},
-      data: this.state.view
+      data: state.view
     })
     /*
     StateManager.getInstance().createState({
