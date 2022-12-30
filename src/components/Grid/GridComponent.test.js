@@ -4,7 +4,11 @@
  */
 import { Grid } from './Grid';
 import { events, triggers, config } from './GridComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+
+import { util } from 'modelui-core-runtime';
+import { layout } from 'modelui-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('Some test', () => {
   test('Test', () => { });
@@ -12,7 +16,10 @@ describe('Some test', () => {
 
 /*
 describe('GridComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,
     config,
     [
       'submit',
@@ -42,7 +49,9 @@ describe('GridComponent protocol', () => {
 });
 
 describe('Grid register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
     'grid',
     Grid,
     triggers,

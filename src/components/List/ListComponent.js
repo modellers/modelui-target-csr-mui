@@ -11,10 +11,10 @@ import { withStyles } from '@mui/styles';
 // DD components
 import { AvatarRender } from '../Avatar/AvatarComponent'
 
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+import { structs } from 'modelui-core-runtime';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 export const options = {
   "id": "list",
@@ -77,7 +77,7 @@ export const config = {
     "list-item": item
   },
   options: options,
-  state: StateList
+  state: structs.ListBase.StateList
 }
 
 const style = (theme) => ({
@@ -96,7 +96,7 @@ function ListAvatar(props) {
 
 }
 
-class ListComponent extends ListBase {
+class ListComponent extends structs.ListBase.ListBase {
 
   secondaryAction = (itm, classes) => {
     if (itm.secondary) {

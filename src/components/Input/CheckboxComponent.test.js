@@ -5,10 +5,17 @@
 
 import { Checkbox } from './Input'
 import { events, triggers, config } from './CheckboxComponent'
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+// util
+import { util } from 'modelui-core-runtime';
+import { layout } from 'modelui-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('CheckboxComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,
     config,
     [
       'submit',
@@ -37,7 +44,9 @@ describe('CheckboxComponent protocol', () => {
 });
 
 describe('Checkbox register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
     'checkboxes',
     Checkbox,
     triggers,

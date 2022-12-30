@@ -9,10 +9,13 @@ import Icon from '@mui/material/Icon';
 // styles
 import { makeStyles } from '@mui/styles';
 import { withStyles } from '@mui/styles';
-import EventManager from '../../event/Event';
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
-export const events = baseEvents;
-export const triggers = baseTriggers;
+
+// state
+import { structs } from 'modelui-core-runtime';
+
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
+
 
 export const options = {
   "id": "buttons",
@@ -94,7 +97,7 @@ export const config = {
     "button": item
   },
   options: options,
-  state: StateList
+  state: structs.ListBase.StateList
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -196,7 +199,7 @@ function ButtonSingle(props) {
 
 ////////////////////////////////////////////////
 
-class ButtonComponent extends ListBase {
+class ButtonComponent extends structs.ListBase.ListBase {
 
   setSelectedId = (id) => {
     EventManager.getInstance().addEvent(this.props.id, 'selected', { id: id }, null);

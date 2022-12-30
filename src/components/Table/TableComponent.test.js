@@ -5,10 +5,18 @@
 
 import { Table } from './Table'
 import { events, triggers, config } from './TableComponent';
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+// utils
+import { util } from 'modelui-core-runtime';
+import { layout } from 'modelui-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
+
 
 describe('TableComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,
     config,
     [
       'submit',
@@ -38,7 +46,9 @@ describe('TableComponent protocol', () => {
 });
 
 describe('Table register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
     'table',
     Table,
     triggers,

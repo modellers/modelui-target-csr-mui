@@ -3,16 +3,15 @@
  * Testing DD events and actions integrety
  */
 
-import { events, triggers, config } from './CardComponent'
-import { Card } from './Card'
+import { Container } from './Grid';
+import { events, triggers, config } from './ContainerComponent';
 
-// test utils
 import { util } from 'modelui-core-runtime';
 import { layout } from 'modelui-core-runtime'
 import registerComponents from '../Components';
 import renderer from 'react-test-renderer';
 
-describe('CardComponent protocol', () => {
+describe('ContainerComponent protocol', () => {
   const tests = util.TestUtil.createComponentClassTests(
     layout.Manager.ComponentManager.getInstance(),
     registerComponents,
@@ -40,17 +39,16 @@ describe('CardComponent protocol', () => {
     'deselected',
     'clearing',
     'cleared'
-  ]
-  );
+  ]);
   tests.forEach((t) => { test(t.title, t.test); });
 });
 
-describe('Card register', () => {
+describe('Container register', () => {
   const tests = util.TestUtil.createComponentRegisterTests(
     layout.Manager.ComponentManager.getInstance(),
     registerComponents,
-    'cards',
-    Card,
+    'container',
+    Container,
     triggers,
     events,
     config,

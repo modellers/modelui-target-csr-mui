@@ -9,10 +9,10 @@ import Checkbox from '@mui/material/Checkbox';// styles
 import { withStyles } from '@mui/styles';
 import getIcon from '../../util/IconUtil';
 
-import { StateList, ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+import { structs } from 'modelui-core-runtime';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 export const options = {
   "id": "checkboxes",
@@ -111,7 +111,7 @@ export const config = {
   contains: {
     "checkbox": item
   },
-  state: StateList
+  state: structs.ListBase.StateList
 }
 
 const style = (theme) => ({
@@ -120,7 +120,7 @@ const style = (theme) => ({
   },
 });
 
-class CheckboxComponent extends ListBase {
+class CheckboxComponent extends structs.ListBase.ListBase {
 
   handleSelect = (item, idx, evt) => {
     this.setSelectedId(item.id, evt, !item.selected);

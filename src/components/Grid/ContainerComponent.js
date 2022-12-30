@@ -4,9 +4,12 @@ import React from 'react';
 // styles
 import { withStyles } from '@mui/styles';
 
-import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase'
-export const events = baseEvents;
-export const triggers = baseTriggers;
+// state
+import { layout } from 'modelui-core-runtime';
+
+export const events = layout.LayoutBase.events;
+export const triggers = layout.LayoutBase.triggers;
+
 export const options = {
   "id": "container",
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -30,14 +33,14 @@ export const config = {
   },
   contains: {},
   options: options,
-  state: StateLayout
+  state: layout.LayoutBase.StateLayout
 }
 
 
 const style = (theme) => ({
 });
 
-class ContainerComponent extends LayoutBase {
+class ContainerComponent extends layout.LayoutBase.LayoutBase {
   /**
    * Displays one rendered content at a time.
    */

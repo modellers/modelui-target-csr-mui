@@ -9,10 +9,12 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // styles
 import { withStyles } from '@mui/styles';
+// state
+import { layout } from 'modelui-core-runtime';
 
-import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase'
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = layout.LayoutBase.events;
+export const triggers = layout.LayoutBase.triggers;
+
 export const options = {
   "id": "accordion",
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -84,7 +86,7 @@ export const config = {
     "accordion-section": item
   },
   options: options,
-  state: StateLayout
+  state: layout.LayoutBase.StateLayout
 }
 
 const style = (theme) => ({
@@ -102,7 +104,7 @@ const style = (theme) => ({
   },
 });
 
-class AccordionComponent extends LayoutBase {
+class AccordionComponent extends layout.LayoutBase.LayoutBase {
   /**
    * Used to manage internal state of avatars
    */

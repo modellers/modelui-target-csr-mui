@@ -1,7 +1,7 @@
-import { ListBase, events as baseEvents, triggers as baseTriggers } from '../../event/ListBase'
+import { structs } from 'modelui-core-runtime';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = structs.ListBase.events;
+export const triggers = structs.ListBase.triggers;
 
 export const options = {
   "id": "MemoryStorage",
@@ -25,10 +25,11 @@ export const config = {
     contains: [],
     within: "component" // parent
   },
-  options: options
+  options: options,
+  state: structs.ListBase.StateList
 }
 
-export default class MemoryStorage extends ListBase {
+export default class MemoryStorage extends structs.ListBase.ListBase {
   /**
    * TODO: this component does not need to extend react Component
    */

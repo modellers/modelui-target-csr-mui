@@ -7,9 +7,10 @@ import { withStyles } from '@mui/styles';
 import EventManager from '../../event/Event';
 // input base
 import { StateInput, events as inputEvents, triggers as inputTriggers, InputBase } from '../../event/InputBase';
+import { structs } from 'modelui-core-runtime';
 
-export const events = inputEvents;
-export const triggers = inputTriggers;
+export const events = structs.InputBase.events;
+export const triggers = structs.InputBase.triggers;
 
 export const options = {
   "id": "textfield",
@@ -62,13 +63,13 @@ export const config = {
     within: "component" // parent
   },
   options: options,
-  state: StateInput
+  state: structs.InputBase.StateInput
 }
 
 const style = (theme) => ({ // https://material-ui.com/styles/basics/
 });
 
-class TextfieldComponent extends InputBase {
+class TextfieldComponent extends structs.InputBase.InputBase {
   /**
    * Used to manage internal state of avatars
    */

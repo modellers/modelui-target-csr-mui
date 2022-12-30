@@ -10,9 +10,12 @@ import Box from '@mui/material/Box';
 // styles
 import { withStyles } from '@mui/styles';
 import getIcon from '../../util/IconUtil';
-import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase'
-export const events = baseEvents;
-export const triggers = baseTriggers;
+// state
+import { layout } from 'modelui-core-runtime';
+
+export const events = layout.LayoutBase.events;
+export const triggers = layout.LayoutBase.triggers;
+
 
 export const options = {
   "id": "tabs",
@@ -110,14 +113,14 @@ export const config = {
   contains: {
     'tab': item
   },
-  state: StateLayout
+  state: layout.LayoutBase.StateLayout
 }
 
 const style = (theme) => ({
 });
 
 
-class TabsComponent extends LayoutBase {
+class TabsComponent extends layout.LayoutBase.LayoutBase {
   /**
    * Used to manage internal state of avatars
    */
