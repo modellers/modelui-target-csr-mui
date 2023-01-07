@@ -1,11 +1,8 @@
 // https://material-ui.com/components/autocomplete/
 import React from 'react';
 // material ui components
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-// 
-import Typography from '@mui/material/Typography';
+import {Accordion, AccordionSummary, AccordionDetails, Typography} from '../../theme/components';
+// icons
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // styles
 import { withStyles } from '@mui/styles';

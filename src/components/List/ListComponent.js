@@ -5,9 +5,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
-import { renderContent } from '../../util/ComponentUtil';
 // styles
-import { withStyles } from '@mui/styles';
+import { withStyles } from '../../theme/components';
+// render
+import { renderContent } from '../../util/ComponentUtil';
+
 // DD components
 import { AvatarRender } from '../Avatar/AvatarComponent'
 

@@ -1,7 +1,9 @@
 // https://material-ui.com/api/typography/
 import React from 'react';
-import { withStyles } from '@mui/styles';
-import Typography from '@mui/material/Typography';
+
+import { Typography } from '../../theme/components';
+// style
+import { withStyles } from '../../theme/components';
 
 import { structs } from 'modelui-core-runtime';
 

@@ -3,12 +3,9 @@
 import React from 'react';
 // material ui components
 
-import AppBar from '@mui/material/AppBar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+import { AppBar, Tabs, Tab, Box } from '../../theme/components';
 // styles
-import { withStyles } from '@mui/styles';
+import { withStyles } from '../../theme/components';
 import getIcon from '../../util/IconUtil';
 // state
 import { layout } from 'modelui-core-runtime';

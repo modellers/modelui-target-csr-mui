@@ -1,9 +1,9 @@
 // https://material-ui.com/api/typography/
 import React from 'react';
-import { withStyles } from '@mui/styles';
 
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import { ImageList, ImageListItem } from '../../theme/components';
+
+import { withStyles } from '../../theme/components';
 
 import { structs } from 'modelui-core-runtime';
 

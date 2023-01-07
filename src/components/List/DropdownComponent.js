@@ -1,11 +1,9 @@
 // https://material-ui.com/components/autocomplete/
 import React from 'react';
 // material ui components
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/lab/Autocomplete';
-import Box from '@mui/material/Box';
+import { TextField, Autocomplete, Box} from '../../theme/components';
 // styles
-import { withStyles } from '@mui/styles';
+import { withStyles } from '../../theme/components';
 
 import { structs } from 'modelui-core-runtime';
 

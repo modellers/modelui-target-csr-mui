@@ -1,11 +1,12 @@
 import React from 'react';
-// material ui components
+// Tree
 import TreeView from '@mui/lab/TreeView';
+import TreeItem from '@mui/lab/TreeItem';
+// Icon
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import TreeItem from '@mui/lab/TreeItem';
-// styles
-import { withStyles } from '@mui/styles';
+// style
+import { withStyles } from '../../theme/components';
 
 import { structs } from 'modelui-core-runtime';
 

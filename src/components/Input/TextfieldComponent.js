@@ -1,8 +1,8 @@
 import React from 'react';
 // material-ui
-import TextField from '@mui/material/TextField'; // https://material-ui.com/components/text-fields/
+import { TextField } from '../../theme/components'; // https://material-ui.com/components/text-fields/
 // styles
-import { withStyles } from '@mui/styles';
+import { withStyles } from '../../theme/components';
 // event handler
 import EventManager from '../../event/Event';
 // state

@@ -1,11 +1,8 @@
 // https://kitson-broadhurst.medium.com/quickly-set-up-a-theme-in-material-ui-and-access-it-in-your-components-ba0565304887
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardActions from '@mui/material/CardActions';
+import { Card, CardHeader, CardMedia, CardActions } from '../../theme/components';
 // styles
-import { withStyles } from '@mui/styles';
+import { withStyles } from '../../theme/components';
 // DD components
 import { renderContent } from '../../util/ComponentUtil';
 // state

@@ -1,9 +1,9 @@
 // https://material-ui.com/components/autocomplete/
 import React from 'react';
-// material ui components
-import { withStyles } from '@mui/styles';
 // material ui table
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid } from '../../theme/components';
+// styles
+import { withStyles } from '../../theme/components';
 
 import { structs } from 'modelui-core-runtime';
 

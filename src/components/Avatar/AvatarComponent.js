@@ -1,10 +1,8 @@
 import React from 'react';
 // material ui components
-import Avatar from '@mui/material/Avatar';
-import AvatarGroup from '@mui/lab/AvatarGroup';
-import Tooltip from '@mui/material/Tooltip';
+import { Avatar, AvatarGroup, Tooltip } from '../../theme/components';
 // styles
-import { withStyles } from '@mui/styles';
+import { withStyles } from '../../theme/components';
 // common tools
 import getIcon from '../../util/IconUtil';
 

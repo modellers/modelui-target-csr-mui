@@ -1,14 +1,10 @@
 import React from 'react';
-import Fab from '@mui/material/Fab';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import IconButton from '@mui/material/IconButton';
-import getIcon from '../../util/IconUtil';
-import Icon from '@mui/material/Icon';
+import { Fab, Button, ButtonGroup, IconButton, Icon } from '../../theme/components';
 
 // styles
-import { makeStyles } from '@mui/styles';
-import { withStyles } from '@mui/styles';
+import { makeStyles, withStyles } from '../../theme/components';
+
+import getIcon from '../../util/IconUtil';
 
 // state
 import { structs } from 'modelui-core-runtime';

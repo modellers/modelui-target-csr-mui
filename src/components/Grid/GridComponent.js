@@ -1,9 +1,9 @@
 // https://material-ui.com/components/autocomplete/
 import React from 'react';
 // material ui components
-import Grid from '@mui/material/Grid';
+import { Grid } from '../../theme/components';
 // styles
-import { withStyles } from '@mui/styles';
+import { withStyles } from '../../theme/components';
 
 // state
 import { layout } from 'modelui-core-runtime';
