@@ -1,7 +1,7 @@
 // react basics
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+// style
+import { ThemeProvider, CssBaseline } from '../../theme/components';
 import theme from './theme';
 
 // libraries

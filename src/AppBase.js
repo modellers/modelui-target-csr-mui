@@ -1,6 +1,7 @@
 import React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
+// style
+import { ThemeProvider, CssBaseline } from '../../theme/components';
 
 import { Layout } from './components/Grid/Grid';
 import { Dialog } from './components/Modal/Modal';
@@ -11,8 +12,6 @@ import ComponentManager from './components/Layout/Manager';
 import registerComponents from './components/Components';
 import registerPluginComponents from './components/Plugins';
 import { registerEventDebugging, registerEventApp } from './event/CommonEvents';
-
-import { ThemeProvider } from '@mui/material/styles';
 
 class AppBase extends React.Component {
 

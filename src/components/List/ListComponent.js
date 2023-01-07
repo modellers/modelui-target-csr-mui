@@ -1,10 +1,6 @@
 import React from 'react';
 // material ui components
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
+import { List, ListItem, ListItemText, ListItemAvatar, ListItemSecondaryAction } from '../../theme/components';
 // styles
 import { withStyles } from '../../theme/components';
 // render

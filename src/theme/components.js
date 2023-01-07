@@ -4,6 +4,8 @@
 
 // Styles
 import { withStyles as _withStyles, makeStyles as _makeStyles } from '@mui/styles';
+import { createTheme as _createTheme, ThemeProvider as _ThemeProvider } from '@mui/material/styles';
+import _CssBaseline from '@mui/material/CssBaseline';
 // Avatar
 import _Avatar from '@mui/material/Avatar';
 import _AvatarGroup from '@mui/lab/AvatarGroup';
@@ -19,6 +21,7 @@ import _Card from '@mui/material/Card';
 import _CardHeader from '@mui/material/CardHeader';
 import _CardMedia from '@mui/material/CardMedia';
 import _CardActions from '@mui/material/CardActions';
+import _CardContent from '@mui/material/CardContent';
 // Accordion
 import _Accordion from '@mui/material/Accordion';
 import _AccordionSummary from '@mui/material/AccordionSummary';
@@ -61,6 +64,16 @@ import _TableRow from '@mui/material/TableRow';
 // Tree
 import _TreeView from '@mui/lab/TreeView';
 import _TreeItem from '@mui/lab/TreeItem';
+// Snackbar
+import _Snackbar from '@mui/material/Snackbar';
+import _MuiAlert from '@mui/lab/Alert';
+// Dialog
+import _Dialog from '@mui/material/Dialog';
+import _DialogTitle from '@mui/material/DialogTitle';
+import _DialogActions from '@mui/material/DialogActions';
+import _DialogContent from '@mui/material/DialogContent';
+import _DialogContentText from '@mui/material/DialogContentText';
+import _MuiDialogTitle from '@mui/material/DialogTitle';
 
 //// /////////////////////////////
 ///  Exports
@@ -69,6 +82,8 @@ import _TreeItem from '@mui/lab/TreeItem';
 // Styles
 export const withStyles = _withStyles
 export const makeStyles = _makeStyles
+export const createTheme = _createTheme
+export const ThemeProvider = _ThemeProvider
 // Avatar
 export const Avatar = _Avatar
 export const AvatarGroup = _AvatarGroup
@@ -84,6 +99,7 @@ export const Card = _Card
 export const CardHeader = _CardHeader
 export const CardMedia = _CardMedia
 export const CardActions = _CardActions
+export const CardContent = _CardContent
 // Accordion
 export const Accordion = _Accordion
 export const AccordionSummary = _AccordionSummary
@@ -124,6 +140,15 @@ export const TableContainer = _TableContainer
 export const TableHead = _TableHead
 export const TableRow = _TableRow
 // Tree
-// Tree
 export const TreeView = _TreeView
 export const TreeItem = _TreeItem
+// Snackbar
+export const Snackbar = _Snackbar
+export const MuiAlert = _MuiAlert
+// Dialog
+export const Dialog = _Dialog
+export const DialogTitle = _DialogTitle
+export const DialogActions = _DialogActions
+export const DialogContent = _DialogContent
+export const DialogContentText = _DialogContentText
+export const MuiDialogTitle = _MuiDialogTitle

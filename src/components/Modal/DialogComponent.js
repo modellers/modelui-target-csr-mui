@@ -1,17 +1,13 @@
 // https://material-ui.com/components/dialogs/
 import React from 'react';
 
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { withStyles } from '@mui/styles';
-import MuiDialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
+import { Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, MuiDialogTitle } from '../../theme/components';
+import { Button, IconButton, Typography } from '../../theme/components';
+
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
+// styles
+import { withStyles } from '../../theme/components';
+// render
 import { renderContent } from '../../util/ComponentUtil';
 
 

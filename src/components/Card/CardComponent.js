@@ -1,6 +1,6 @@
 // https://kitson-broadhurst.medium.com/quickly-set-up-a-theme-in-material-ui-and-access-it-in-your-components-ba0565304887
 import React from 'react';
-import { Card, CardHeader, CardMedia, CardActions } from '../../theme/components';
+import { Card, CardHeader, CardMedia, CardActions, CardContent } from '../../theme/components';
 // styles
 import { withStyles } from '../../theme/components';
 // DD components
@@ -9,11 +9,6 @@ import { renderContent } from '../../util/ComponentUtil';
 import { structs } from 'modelui-core-runtime';
 // utils
 import { isObject } from '../../util/ObjUtil';
-
-// TBI
-// import DDAvatar from '../Avatar/Avatar';
-// import { LayoutRender } from '../Layout/Layout';
-// import CardContent from '@mui/material/CardContent';
 
 export const events = structs.ListBase.events;
 export const triggers = structs.ListBase.triggers;

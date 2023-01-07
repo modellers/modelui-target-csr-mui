@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { withStyles } from '@mui/styles';
-// import MenuList from '@mui/material/MenuList';
 
 // TODO: https://v4.mui.com/components/snackbars/
 // TODO: Alert type (add default style)
 // TODO: Message text, Duration, Position
 // TODO: Action
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/lab/Alert';
-
+import Snackbar from '../../theme/components';
+import MuiAlert from '../../theme/components';
+// styles
+import { withStyles } from '../../theme/components';
 // event handler
 import EventManager from '../../event/Event';
 // import {ComponentMenuItem} from './MenuItem';
