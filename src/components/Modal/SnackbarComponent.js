@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 // TODO: Alert type (add default style)
 // TODO: Message text, Duration, Position
 // TODO: Action
-import Snackbar from '../../theme/components';
-import MuiAlert from '../../theme/components';
+import {Snackbar, MuiAlert} from '../../theme/components';
 // styles
 import { withStyles } from '../../theme/components';
 // event handler

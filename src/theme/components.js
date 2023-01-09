@@ -84,6 +84,7 @@ export const withStyles = _withStyles
 export const makeStyles = _makeStyles
 export const createTheme = _createTheme
 export const ThemeProvider = _ThemeProvider
+export const CssBaseline = _CssBaseline
 // Avatar
 export const Avatar = _Avatar
 export const AvatarGroup = _AvatarGroup
