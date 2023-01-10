@@ -1,7 +1,7 @@
 import React from 'react';
 import theme from './theme';
 // style
-import { ThemeProvider, CssBaseline } from '../../theme/components';
+import { ThemeProvider, CssBaseline } from './theme/components';
 
 import { Layout } from './components/Grid/Grid';
 import { Dialog } from './components/Modal/Modal';

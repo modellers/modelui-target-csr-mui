@@ -1,6 +1,6 @@
 // react basics
 import React from 'react';
-import { ThemeProvider, CssBaseline } from '../../theme/components';
+import { ThemeProvider, CssBaseline } from './theme/components';
 
 import theme from './theme';
 

@@ -1,4 +1,4 @@
-import { createTheme } from '../../theme/components';
+import { createTheme } from './theme/components';
 
 // https://mui.com/customization/palette/
 
