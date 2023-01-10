@@ -14,9 +14,11 @@ export class StateBaseComponent extends Component {
     }
 
     // make sure the manager is of correct type
+    /*
     if (this.props.manager.constructor.name !== 'ComponentManager') {
       throw "Constructor must be component manager. Got '" + this.props.manager.constructor.name + "' for component " + this.props.id;
     }
+    */
 
     // get the state memory manager
     this.stateManager = this.props.manager.getStateFactory().getManager(this.props.id);

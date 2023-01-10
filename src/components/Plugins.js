@@ -16,10 +16,11 @@ export default function registerPluginComponents(component_manager) {
     if (!component_manager) {
         component_manager = ComponentManager.getInstance();
     }
-
+    /*
     if (component_manager.constructor.name !== 'ComponentManager') {
         throw "Constructor must be component manager";
     }
+    */
     register_modelui_wrap_ace(component_manager);
     register_modelui_wrap_bigcalendar(component_manager);
     register_modelui_wrap_form(component_manager);
