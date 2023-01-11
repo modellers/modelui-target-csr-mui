@@ -27,6 +27,7 @@ export default function registerComponents(component_manager) {
     */
 
     registerView(component_manager);
+    registerLayout(component_manager)
     registerCard(component_manager);
     registerButton(component_manager);
     registerAvatar(component_manager);
@@ -42,7 +43,6 @@ export default function registerComponents(component_manager) {
     registerGridRow(component_manager);
     registerAccordion(component_manager);
     registerTabs(component_manager);
-    registerLayout(component_manager)
     registerDialog(component_manager);
     registerPopup(component_manager);
     registerTree(component_manager);

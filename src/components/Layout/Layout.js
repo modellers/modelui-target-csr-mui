@@ -1,6 +1,5 @@
 import React from 'react';
-import ComponentManager from './Manager'
-
+import { layout } from 'modelui-core-runtime';
 
 export function LayoutRender(container_id, data, classes, config, wrapper = 'div', ignore = []) {
   let content = []; // rendered content
@@ -18,7 +17,7 @@ export function LayoutRender(container_id, data, classes, config, wrapper = 'div
     } else {
       const item_data = data || {};
       const params = { id: id, key: id, classes: classes, data: item.data || item_data[item.pick] || item_data, config: item.config };
-      const component = ComponentManager.getInstance().getComponentInstance(item.type, params);
+      const component = layout.Manager.ComponentManager.getInstance().getComponentInstance(item.type, params);
       if (component) {
         content.push(component)
       } else {

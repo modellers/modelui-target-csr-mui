@@ -2,13 +2,17 @@ import React from 'react';
 
 import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase';
 import Layouter from '../Layout/Layout';
+import { layout, structs } from 'modelui-core-runtime';
 
 export const events = baseEvents;
 export const triggers = baseTriggers;
+
+
 export const options = {
   "id": "layout",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "View options",
+  "title": "Layout",
+  "description": "Layout options",
   "x-layout": "component",
   "type": "object",
   "version": 0.1,
@@ -21,18 +25,18 @@ export const config = {
   name: "Layout",
   type: "layout",
   author: "Kjartan Jónsson",
-  description: "LayoutComponent component",
+  description: "Layout component",
   version: 0.1,
   relation: {
     contains: [],
     within: "component" // parent
   },
   options: options,
-  state: StateLayout
+  state: layout.LayoutBase.StateLayout
 }
 
 
-export default class LayoutComponent extends LayoutBase {
+export default class LayoutComponent extends layout.LayoutBase.LayoutBase {
   /**
    * Used to manage layout
    */
