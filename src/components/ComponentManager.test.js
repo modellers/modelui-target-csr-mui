@@ -4,15 +4,16 @@
  */
 
 import registerComponents from './Components';
-import ComponentManager from './Layout/Manager';
+import { layout } from 'modelui-core-runtime';
 
 describe('Components ', () => {
   test('Registering should all have events and actions', (done) => {
-    registerComponents();
     // check for events and actions
     // const comp = ComponentManager.getInstance().getComponents();
-    const inventory = ComponentManager.getInstance().collectComponentInventory();
-    const buttons = inventory['button'];
+    const _component_manager = layout.Manager.ComponentManager.getInstance();
+    registerComponents(_component_manager);
+    const inventory = _component_manager.collectComponentInventory();
+    const buttons = inventory['buttons'];
 
     expect(Object.keys(buttons.events).length).toBeGreaterThan(4);
     expect(Object.keys(buttons.actions).length).toBeGreaterThan(4);
