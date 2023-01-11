@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase';
-import Layouter from '../Layout/Layout';
-import { layout, structs } from 'modelui-core-runtime';
+import { layout } from 'modelui-core-runtime';
 
-export const events = baseEvents;
-export const triggers = baseTriggers;
+export const events = layout.LayoutBase.events;
+export const triggers = layout.LayoutBase.triggers;
 
 
 export const options = {
@@ -35,6 +33,7 @@ export const config = {
   state: layout.LayoutBase.StateLayout
 }
 
+const Layouter = layout.Layout.Layouter;
 
 export default class LayoutComponent extends layout.LayoutBase.LayoutBase {
   /**
