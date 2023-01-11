@@ -2,7 +2,6 @@ import React from 'react';
 
 import { LayoutBase, events as baseEvents, triggers as baseTriggers } from './LayoutBase';
 import Layouter from '../Layout/Layout';
-import ComponentManager from '../Layout/Manager'
 
 export const events = baseEvents;
 export const triggers = baseTriggers;

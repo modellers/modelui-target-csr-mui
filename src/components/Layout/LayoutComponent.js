@@ -2,7 +2,6 @@ import React from 'react';
 
 import { StateLayout, LayoutBase, events as baseEvents, triggers as baseTriggers } from '../Layout/LayoutBase';
 import Layouter from '../Layout/Layout';
-import ComponentManager from '../Layout/Manager'
 
 export const events = baseEvents;
 export const triggers = baseTriggers;
@@ -49,8 +48,7 @@ export default class LayoutComponent extends LayoutBase {
     const container_id = this.props.id;
     const data = this.props.data;
     const ignore = [];
-
-    let content = []; // rendered content
+    const content = []; // rendered content
 
     for (let item of this.props.data) {
       // check if we should skip generating this item by request of the caller. Example dont allow card action to have another card
