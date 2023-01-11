@@ -10,7 +10,7 @@ export class StateBaseComponent extends Component {
 
     // check for component manager
     if (!this.props.manager) {
-      throw "Manager was not provided through props for component " + this.props.id;
+      throw new Error("Manager was not provided through props for component " + this.props.id);
     }
 
     // make sure the manager is of correct type

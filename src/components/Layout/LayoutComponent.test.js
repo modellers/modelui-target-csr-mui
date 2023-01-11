@@ -2,8 +2,7 @@
  * ListComponent tests
  * Testing DD events and actions integrety
  */
-import LayoutComponent from './LayoutComponent';
-import { Layout } from './Grid';
+import { Layout } from '../Grid/Grid';
 import { events, triggers, config } from './LayoutComponent';
 import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
 

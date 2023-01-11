@@ -4,7 +4,7 @@ import theme from './theme';
 
 import { Layout } from './components/Grid/Grid';
 import { Dialog } from './components/Modal/Modal';
-import EventManager, { getTransformFunction } from './event/Event';
+import { getTransformFunction } from './event/Event';
 import { layout } from 'modelui-core-runtime'; // import { StateManager } from './event/StateManager';
 // import ComponentManager from './components/Layout/Manager';
 

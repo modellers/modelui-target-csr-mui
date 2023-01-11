@@ -1,4 +1,3 @@
-import React from 'react';
 import ComponentManager from '../components/Layout/Manager';
 
 export function renderContent(classes, item) {

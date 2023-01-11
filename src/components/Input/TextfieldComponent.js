@@ -3,8 +3,6 @@ import React from 'react';
 import TextField from '@mui/material/TextField'; // https://material-ui.com/components/text-fields/
 // styles
 import { withStyles } from '@mui/styles';
-// event handler
-import EventManager from '../../event/Event';
 // state
 import { structs } from 'modelui-core-runtime';
 
