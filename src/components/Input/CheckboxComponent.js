@@ -193,7 +193,7 @@ class CheckboxComponent extends structs.ListBase.ListBase {
           )}
         </FormGroup>
         {this.renderFormHelperText(helper_text)}
-      </FormControl >
+      </FormControl>
     )
   }
 }
