@@ -96,7 +96,7 @@ class ImageComponent extends structs.ListBase.ListBase {
       <div className={classes.root}>
         <ImageList rowHeight={360} className={classes.imageList} cols={3}>
           {this.state.data.map((item) => (
-            <ImageListItem key={item.url} cols={item.cols || 1}>
+            <ImageListItem key={item.id} cols={item.cols || 1}>
               <img src={item.url} alt={item.title} />
             </ImageListItem>
           ))}
