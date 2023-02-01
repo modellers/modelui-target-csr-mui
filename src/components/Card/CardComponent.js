@@ -6,12 +6,13 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 // styles
 import { withStyles } from '@mui/styles';
-// DD components
-import { renderContent } from '../../util/ComponentUtil';
 // state
 import { structs } from 'modelui-core-runtime';
 // utils
 import { isObject } from '../../util/ObjUtil';
+import { util } from 'modelui-core-runtime';
+
+const renderContent = util.ComponentUtil.renderContent
 
 // TBI
 // import DDAvatar from '../Avatar/Avatar';
