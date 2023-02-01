@@ -1,4 +1,3 @@
-// https://material-ui.com/components/dialogs/
 import React from 'react';
 
 import Button from '@mui/material/Button';
@@ -12,11 +11,11 @@ import MuiDialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import { renderContent } from '../../util/ComponentUtil';
 
-
-// event handler
 import EventHandler from '../../event/Event';
+
+import { util } from 'modelui-core-runtime';
+const renderContent = util.ComponentUtil.renderContent
 
 export const triggers = {
   show: {

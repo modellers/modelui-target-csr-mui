@@ -5,13 +5,16 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
-import { renderContent } from '../../util/ComponentUtil';
+
 // styles
 import { withStyles } from '@mui/styles';
 // DD components
 import { AvatarRender } from '../Avatar/AvatarComponent'
 
 import { structs } from 'modelui-core-runtime';
+import { util } from 'modelui-core-runtime';
+
+const renderContent = util.ComponentUtil.renderContent
 
 export const events = structs.ListBase.events;
 export const triggers = structs.ListBase.triggers;
