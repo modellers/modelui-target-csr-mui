@@ -5,11 +5,17 @@
 
 import { events, triggers, config } from './SnackbarComponent'
 import { PopupToaster } from './Modal'
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+// util
+import { util } from 'modelui-core-runtime';
+import { layout } from 'modelui-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('SnackbarComponent protocol', () => {
-  //const tests = createComponentClassTests('test_MenuComponent', MenuComponent, {...triggers, ...{'show':{}, 'hide':{}}}, events);
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,
     config,
     [
       'show',
@@ -24,8 +30,9 @@ describe('SnackbarComponent protocol', () => {
 });
 
 describe('Snackbar register', () => {
-  //const tests = createComponentClassTests('test_MenuComponent', MenuComponent, {...triggers, ...{'show':{}, 'hide':{}}}, events);
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
     'popup-toaster',
     PopupToaster,
     triggers,

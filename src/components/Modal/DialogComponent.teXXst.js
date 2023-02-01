@@ -4,10 +4,17 @@
  */
 
 import { DialogComponent, events, triggers, config } from './DialogComponent'
-import { createComponentClassTests, createComponentRegisterTests } from '../../test/utils/TestUtil';
+// util
+import { util } from 'modelui-core-runtime';
+import { layout } from 'modelui-core-runtime'
+import registerComponents from '../Components';
+import renderer from 'react-test-renderer';
 
 describe('DialogComponent protocol', () => {
-  const tests = createComponentClassTests(
+  const tests = util.TestUtil.createComponentClassTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
+    renderer,
     config,
     ['show', 'close'],
     ['showing', 'closed', 'confirmed']
@@ -16,7 +23,9 @@ describe('DialogComponent protocol', () => {
 });
 
 describe('Dialog register', () => {
-  const tests = createComponentRegisterTests(
+  const tests = util.TestUtil.createComponentRegisterTests(
+    layout.Manager.ComponentManager.getInstance(),
+    registerComponents,
     'dialog',
     DialogComponent,
     triggers,
