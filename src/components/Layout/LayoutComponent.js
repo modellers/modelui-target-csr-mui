@@ -19,7 +19,6 @@ export const options = {
 }
 
 export const config = {
-
   name: "Layout",
   type: "layout",
   author: "Kjartan Jónsson",
