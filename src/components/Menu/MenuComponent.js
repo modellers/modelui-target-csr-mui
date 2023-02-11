@@ -76,7 +76,7 @@ export const config = {
   state: structs.ListBase.StateList
 }
 
-function ContentLayout({ data }) {
+function ContentLayout({ page_not_found, data }) {
   return (
     <div>
       <nav>
@@ -84,7 +84,9 @@ function ContentLayout({ data }) {
           {
             data.map((itm, idx) => {
               const url = "/" + itm.id;
-              return (<li><Link to={url}>{itm.title}</Link></li>)
+              if (page_not_found !== itm.id) {
+                return (<li><Link to={url}>{itm.title}</Link></li>)
+              }
             })
           }
         </ul>
@@ -133,7 +135,7 @@ class MenuComponent extends structs.ListBase.ListBase {
     }
   }
 
-  renderPageContent = function (item, landing, manager) {
+  renderPageContent = function (item, landing, page_not_found, manager) {
     const element = this.renderElementContent(item.content, manager);
     if (landing === item.id) { // return both as index and with path if this is the landing page
       return (
@@ -142,6 +144,8 @@ class MenuComponent extends structs.ListBase.ListBase {
           <Route key={item.id} path={item.id} index element={element} />
         </React.Fragment>
       )
+    } if (page_not_found === item.id) {
+      return (<Route key={item.id} path="*" element={element} />)
     } else {
       return (<Route key={item.id} path={item.id} element={element} />)
     }
@@ -149,14 +153,15 @@ class MenuComponent extends structs.ListBase.ListBase {
 
   render() {
     const manager = this.props.manager;
+    const page_not_found = this.props.config.options.not_found;
     let landing = this.props.config.options.initial;
     if ((!landing) && (this.state.data.length)) { landing = this.state.data[0].id; } // select default landing page if not set
     return (
       <Routes>
-        <Route path="/" element={<ContentLayout data={this.state.data} />} >
+        <Route path="/" element={<ContentLayout page_not_found={page_not_found} data={this.state.data} />} >
           {
             this.state.data.map((itm, idx) => {
-              return (this.renderPageContent(itm, landing, manager))
+              return (this.renderPageContent(itm, landing, page_not_found, manager))
             })
           }
         </Route>

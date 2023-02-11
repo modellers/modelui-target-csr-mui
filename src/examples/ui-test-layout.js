@@ -76,6 +76,25 @@ const page_about = {
   }
 }
 
+const page_matchrest = {
+  data: [{
+    'id': 'text_simpleid0',
+    'typography': 'heading',
+    'text': 'Siðan fannst ekki'
+  }, {
+    'id': 'text_simpleid1',
+    'typography': 'text',
+    'text': '404'
+  }],
+  id: 'text_page_matchrest',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
 export const main_top_menu = {
   data: [{
     'id': 'home',
@@ -93,6 +112,10 @@ export const main_top_menu = {
     'id': 'about',
     'title': 'Um okkur',
     'content': page_about
+  }, {
+    'id': 'not_found',
+    'title': 'Siðan fannst ekki',
+    'content': page_matchrest
   }],
   id: 'main_top_menu_id',
   schema: {},
@@ -100,8 +123,8 @@ export const main_top_menu = {
   config: {
     options: {
       initial: "stores",
-      variant: "top",
-
+      not_found: "not_found",
+      variant: "top"
     }
   }
 }
