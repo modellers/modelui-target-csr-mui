@@ -22,6 +22,16 @@ export const options = {
       "type": "string",
       "enum": ["stack", "top", "bottom", "tabs"],
     },
+    "initial": {
+      "title": "Initial",
+      "description": "The initial display page is shown when no path is given",
+      "type": "string"
+    },
+    "not_found": {
+      "title": "Not found",
+      "description": "The name of the page that is displayed if page is not found. This page is not rendered in menu",
+      "type": "string"
+    }
   },
   "required": []
 }
