@@ -3,7 +3,6 @@ import { layout, dialogs } from './examples/ui-test-layout';
 import { events } from './examples/ui-test-events';
 import { EventAnalyzer } from './event/EventAnalyzer';
 
-
 const data_source = []
 
 const data_transform = {}

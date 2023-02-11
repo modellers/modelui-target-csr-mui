@@ -1,7 +1,6 @@
 
-
 // Managers and factories
-import ComponentManager from './Layout/Manager'
+import { layout } from 'modelui-core-runtime';
 
 // Components
 import { registerComponents as register_modelui_wrap_ace } from 'modelui-wrap-ace';
@@ -14,13 +13,9 @@ import { registerComponents as register_modelui_wrap_alicecarousel } from 'model
 export default function registerPluginComponents(component_manager) {
 
     if (!component_manager) {
-        component_manager = ComponentManager.getInstance();
+        component_manager = layout.Manager.ComponentManager.getInstance();
     }
-    /*
-    if (component_manager.constructor.name !== 'ComponentManager') {
-        throw "Constructor must be component manager";
-    }
-    */
+
     register_modelui_wrap_ace(component_manager);
     register_modelui_wrap_bigcalendar(component_manager);
     register_modelui_wrap_form(component_manager);

@@ -144,7 +144,9 @@ class TabsComponent extends layout.LayoutBase.LayoutBase {
   }
 
   handleChange(evt, idx) {
-    this.setSelectedId(this.state.data[idx].id);
+    if (idx < this.state.data.length) {
+      this.setSelectedId(this.state.data[idx].id);
+    }
   }
 
   render() {

@@ -8,8 +8,10 @@
 // TODO: https://ajv.js.org/security.html 
 import Ajv from "ajv";
 import { compareDeep } from "../util/ObjUtil";
+/* DISABLED DUE TO COMPOILE ERRORS
 import { StateManager } from './StateManager';
 import ComponentManager from '../components/Layout/Manager';
+*/
 import { getTransformFunction } from '../event/Event';
 // schema utils
 import { getSchemaGeneratedData } from "../util/SchemaUtil";
@@ -20,6 +22,7 @@ export class EventAnalyzer {
 
   _schemas = {};
   _options = { strict: false };
+  _component_manager = null; // FIXME: find a way to set this securly
 
   /**
    * @returns {EventAnalyzer}
@@ -91,7 +94,7 @@ export class EventAnalyzer {
         }
       }
     } else {
-      return StateManager.getInstance().getManager(component_id);
+      return null; // FIXME: StateManager.getInstance().getManager(component_id);
     }
   }
 
@@ -146,7 +149,7 @@ export class EventAnalyzer {
         "type": "critical",
         "name": "missing",
         "was": "section",
-        "use": Object.keys(ComponentManager.getInstance().getComponents())
+        "use": Object.keys(this._component_manager.getComponents())
       }
       throw report;
     } // total failure
@@ -162,15 +165,15 @@ export class EventAnalyzer {
       }
       throw report;
     } // total failure
-    const component_type = ComponentManager.getInstance().getComponent(component_inst.props.type);
+    const component_type = this._component_manager.getComponent(component_inst.props.type);
     if (component_type === undefined) {
-      report.error_resolve = "Use one of these: " + ComponentManager.getInstance().getComponentTypes();
+      report.error_resolve = "Use one of these: " + this._component_manager.getComponentTypes();
       report.error_detail = "Component type '" + component_inst.props.type + "' is not supported";
       report.data = {
         "type": "critical",
         "name": "unsupported",
         "was": component_inst.props.type,
-        "use": ComponentManager.getInstance().getComponentTypes()
+        "use": this._component_manager.getComponentTypes()
       }
       throw report;
     } // total failure
@@ -187,7 +190,7 @@ export class EventAnalyzer {
         "type": "critical",
         "name": "missing",
         "was": "section",
-        "use": Object.keys(ComponentManager.getInstance().getComponents())
+        "use": Object.keys(this._component_manager.getComponents())
       }
       throw report;
     }
@@ -204,15 +207,15 @@ export class EventAnalyzer {
       throw report;
     } // total failure
 
-    const trigger_type = ComponentManager.getInstance().getComponent(trigger_inst.props.type);
+    const trigger_type = this._component_manager.getComponent(trigger_inst.props.type);
     if (trigger_type === undefined) {
-      report.error_resolve = "Use one of these: " + ComponentManager.getInstance().getComponentTypes();
+      report.error_resolve = "Use one of these: " + this._component_manager.getComponentTypes();
       report.error_detail = "Trigger type '" + trigger_inst.props.type + "' is not supported";
       report.data = {
         "type": "critical",
         "name": "unsupported",
         "was": trigger_inst.props.type,
-        "use": ComponentManager.getInstance().getComponentTypes()
+        "use": this._component_manager.getComponentTypes()
       }
     } // total failure
 

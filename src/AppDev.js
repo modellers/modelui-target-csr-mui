@@ -78,7 +78,7 @@ class App extends AppBase {
         <CssBaseline />
         <div className="App">
           {this.renderBody()}
-        </div >
+        </div>
       </ThemeProvider>
     );
   }

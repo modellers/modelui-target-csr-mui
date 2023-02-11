@@ -14,6 +14,7 @@ import { registerDialog, registerPopup } from './Modal/Modal';
 import { registerContainer, registerGrid, registerGridColumn, registerGridRow, registerView, registerAccordion, registerTabs, registerLayout } from './Grid/Grid';
 import { registerButton } from './Button/Button';
 import { registerTree } from './Tree/Tree';
+import { registerMenu } from './Menu/Menu';
 
 export default function registerComponents(component_manager) {
 
@@ -48,4 +49,5 @@ export default function registerComponents(component_manager) {
     registerTree(component_manager);
     registerTextfield(component_manager);
     registerCheckbox(component_manager);
+    registerMenu(component_manager);
 }

@@ -13,6 +13,8 @@ import { registerEventDebugging, registerEventApp } from './event/CommonEvents';
 
 import { ThemeProvider } from '@mui/material/styles';
 
+import { BrowserRouter } from 'react-router-dom';
+
 class AppBase extends React.Component {
 
   state = {
@@ -124,14 +126,16 @@ class AppBase extends React.Component {
 
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="App">
-          <div>
-            {this.renderBody()}
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <div className="App">
+            <div>
+              {this.renderBody()}
+            </div>
           </div>
-        </div >
-      </ThemeProvider>
+        </ThemeProvider>
+      </BrowserRouter>
     );
   }
 }
