@@ -57,21 +57,84 @@ const page_product_list = {
   }
 }
 
-const page_product_1 = {
+const page_product_1_landing = {
   data: [{
     'id': 'page_product_1a',
     'typography': 'heading',
-    'text': 'Vara 1'
+    'text': 'Vara 1 landing'
   }, {
     'id': 'page_product_1b',
     'typography': 'text',
-    'text': 'Lysing á vöru 1'
+    'text': 'Lysing á vöru 1 landing'
   }],
-  id: 'text_page_products_1',
+  id: 'text_page_products_1_landing',
   schema: {},
   type: 'texts',
   config: {
     options: {
+    }
+  }
+}
+
+const page_product_1_detail = {
+  data: [{
+    'id': 'page_product_1a',
+    'typography': 'heading',
+    'text': 'Vara 1 detail'
+  }, {
+    'id': 'page_product_1b',
+    'typography': 'text',
+    'text': 'Lysing á vöru 1 detail'
+  }],
+  id: 'text_page_products_1_detail',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const page_product_1_listing = {
+  data: [{
+    'id': 'page_product_1a',
+    'typography': 'heading',
+    'text': 'Vara 1 listing'
+  }, {
+    'id': 'page_product_1b',
+    'typography': 'text',
+    'text': 'Lysing á vöru 1 listing'
+  }],
+  id: 'text_page_products_1_listing',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const page_product_1 = {
+  data: [{
+    'id': 'page_product_1_landing',
+    'title': 'The main product 1 page',
+    'unlisted': true,
+    'content': page_product_1_landing
+  }, {
+    'id': 'page_product_1_detail_id',
+    'title': 'Product 1 detail',
+    'content': page_product_1_detail
+  }, {
+    'id': 'page_product_1_listing_id',
+    'title': 'Product 1 listing',
+    'content': page_product_1_listing
+  }],
+  id: 'page_product_1_id',
+  schema: {},
+  type: 'menu',
+  config: {
+    options: {
+      initial: "page_product_1_landing"
     }
   }
 }
@@ -91,33 +154,6 @@ const page_product_2 = {
   type: 'texts',
   config: {
     options: {
-    }
-  }
-}
-
-export const page_products = {
-  data: [{
-    'id': 'page_product_list',
-    'title': 'Products',
-    'unlisted': true,
-    'content': page_product_list
-  }, {
-    'id': 'page_product_1_id',
-    'title': 'Product 1 title',
-    'content': page_product_1
-  }, {
-    'id': 'page_product_2_id',
-    'title': 'Product 2 title',
-    'content': page_product_2
-  }],
-  id: 'page_products_id',
-  schema: {},
-  type: 'menu',
-  config: {
-    options: {
-      parent: "products",
-      initial: "page_product_list",
-      variant: "top"
     }
   }
 }
@@ -175,6 +211,34 @@ const page_matchrest = {
   type: 'texts',
   config: {
     options: {
+    }
+  }
+}
+
+export const page_products = {
+  data: [{
+    'id': 'page_product_list',
+    'title': 'Products',
+    'unlisted': true,
+    'content': page_product_list
+  }, {
+    'id': 'page_product_1_id',
+    'title': 'Product 1 title',
+    'path': 'page_product_1_id/*',
+    'content': page_product_1
+  }, {
+    'id': 'page_product_2_id',
+    'title': 'Product 2 title',
+    'content': page_product_2
+  }],
+  id: 'page_products_id',
+  schema: {},
+  type: 'menu',
+  config: {
+    options: {
+      parent: "products",
+      initial: "page_product_list",
+      variant: "top"
     }
   }
 }

@@ -155,7 +155,7 @@ class MenuComponent extends structs.ListBase.ListBase {
           <Route key={item.id} path={path} index element={element} />
         </React.Fragment>
       )
-    } if (page_not_found === item.id) {
+    } else if (page_not_found === item.id) {
       return (<Route key={item.id} path="*" element={element} />)
     } else {
       return (<Route key={item.id} path={path} element={element} />)
@@ -172,7 +172,7 @@ class MenuComponent extends structs.ListBase.ListBase {
 
     return (
       <Routes>
-        <Route path={parent} element={<ContentLayout parent={this.props.config.options.parent} page_not_found={page_not_found} data={this.state.data} />} >
+        <Route element={<ContentLayout parent={this.props.config.options.parent} page_not_found={page_not_found} data={this.state.data} />} >
           {
             this.state.data.map((itm, idx) => {
               return (this.renderPageContent(itm, landing, parent, page_not_found, manager))
