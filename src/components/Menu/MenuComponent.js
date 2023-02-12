@@ -86,15 +86,15 @@ export const config = {
   state: structs.ListBase.StateList
 }
 
-function ContentLayout({ page_not_found, data }) {
+function ContentLayout({ parent, page_not_found, data }) {
   return (
     <div>
       <nav>
         <ul>
           {
             data.map((itm, idx) => {
-              const url = "/" + itm.id;
-              if (page_not_found !== itm.id) {
+              const url = itm.id;
+              if ((page_not_found !== itm.id) && (itm.unlisted !== true)) {
                 return (<li><Link to={url}>{itm.title}</Link></li>)
               }
             })
@@ -145,19 +145,20 @@ class MenuComponent extends structs.ListBase.ListBase {
     }
   }
 
-  renderPageContent = function (item, landing, page_not_found, manager) {
+  renderPageContent = function (item, landing, parent, page_not_found, manager) {
     const element = this.renderElementContent(item.content, manager);
+    const path = parent + (item.path || item.id)
     if (landing === item.id) { // return both as index and with path if this is the landing page
       return (
         <React.Fragment>
-          <Route key={item.id} index element={element} />
-          <Route key={item.id} path={item.id} index element={element} />
+          <Route key={item.id + "idx"} index element={element} />
+          <Route key={item.id} path={path} index element={element} />
         </React.Fragment>
       )
     } if (page_not_found === item.id) {
       return (<Route key={item.id} path="*" element={element} />)
     } else {
-      return (<Route key={item.id} path={item.id} element={element} />)
+      return (<Route key={item.id} path={path} element={element} />)
     }
   }
 
@@ -165,13 +166,16 @@ class MenuComponent extends structs.ListBase.ListBase {
     const manager = this.props.manager;
     const page_not_found = this.props.config.options.not_found;
     let landing = this.props.config.options.initial;
+    let parent = "/"
+
     if ((!landing) && (this.state.data.length)) { landing = this.state.data[0].id; } // select default landing page if not set
+
     return (
       <Routes>
-        <Route path="/" element={<ContentLayout page_not_found={page_not_found} data={this.state.data} />} >
+        <Route path={parent} element={<ContentLayout parent={this.props.config.options.parent} page_not_found={page_not_found} data={this.state.data} />} >
           {
             this.state.data.map((itm, idx) => {
-              return (this.renderPageContent(itm, landing, page_not_found, manager))
+              return (this.renderPageContent(itm, landing, parent, page_not_found, manager))
             })
           }
         </Route>

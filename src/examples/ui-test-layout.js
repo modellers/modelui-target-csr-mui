@@ -19,7 +19,7 @@ const page_landing = {
   }
 }
 
-const page_products = {
+const page_products_text = {
   data: [{
     'id': 'text_simpleid0',
     'typography': 'heading',
@@ -34,6 +34,90 @@ const page_products = {
   type: 'texts',
   config: {
     options: {
+    }
+  }
+}
+
+const page_product_list = {
+  data: [{
+    'id': 'page_product_2a',
+    'typography': 'heading',
+    'text': 'Vörur'
+  }, {
+    'id': 'page_product_2b',
+    'typography': 'text',
+    'text': 'Mælum með þessum'
+  }],
+  id: 'text_page_product_list',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const page_product_1 = {
+  data: [{
+    'id': 'page_product_1a',
+    'typography': 'heading',
+    'text': 'Vara 1'
+  }, {
+    'id': 'page_product_1b',
+    'typography': 'text',
+    'text': 'Lysing á vöru 1'
+  }],
+  id: 'text_page_products_1',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const page_product_2 = {
+  data: [{
+    'id': 'page_product_2a',
+    'typography': 'heading',
+    'text': 'Vara 2'
+  }, {
+    'id': 'page_product_2b',
+    'typography': 'text',
+    'text': 'Lysing á vöru 2'
+  }],
+  id: 'text_page_products_2',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+export const page_products = {
+  data: [{
+    'id': 'page_product_list',
+    'title': 'Products',
+    'unlisted': true,
+    'content': page_product_list
+  }, {
+    'id': 'page_product_1_id',
+    'title': 'Product 1 title',
+    'content': page_product_1
+  }, {
+    'id': 'page_product_2_id',
+    'title': 'Product 2 title',
+    'content': page_product_2
+  }],
+  id: 'page_products_id',
+  schema: {},
+  type: 'menu',
+  config: {
+    options: {
+      parent: "products",
+      initial: "page_product_list",
+      variant: "top"
     }
   }
 }
@@ -103,6 +187,7 @@ export const main_top_menu = {
   }, {
     'id': 'products',
     'title': 'Vörur og þjónusta',
+    'path': 'products/*',
     'content': page_products
   }, {
     'id': 'stores',
@@ -122,6 +207,7 @@ export const main_top_menu = {
   type: 'menu',
   config: {
     options: {
+      parent: "/",
       initial: "stores",
       not_found: "not_found",
       variant: "top"
