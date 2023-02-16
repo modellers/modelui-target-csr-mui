@@ -23,11 +23,11 @@ const page_products_text = {
   data: [{
     'id': 'text_simpleid0',
     'typography': 'heading',
-    'text': 'Vörur'
+    'text': 'Tæki'
   }, {
     'id': 'text_simpleid1',
     'typography': 'text',
-    'text': 'Hér er vörur'
+    'text': 'Hér er Tæki'
   }],
   id: 'text_page_products',
   schema: {},
@@ -42,7 +42,7 @@ const page_product_list = {
   data: [{
     'id': 'page_product_2a',
     'typography': 'heading',
-    'text': 'Vörur'
+    'text': 'Tæki'
   }, {
     'id': 'page_product_2b',
     'typography': 'text',
@@ -162,11 +162,11 @@ const page_stores = {
   data: [{
     'id': 'text_simpleid0',
     'typography': 'heading',
-    'text': 'Verslanir'
+    'text': 'Stöðvar'
   }, {
     'id': 'text_simpleid1',
     'typography': 'text',
-    'text': 'Hér er listi af verslanir'
+    'text': 'Hér er listi af Stöðvar'
   }],
   id: 'text_page_stores',
   schema: {},
@@ -215,6 +215,102 @@ const page_matchrest = {
   }
 }
 
+const profileA = {
+  data: [{
+    'id': 'text_profilead1',
+    'typography': 'heading',
+    'text': 'Tæki A'
+  }, {
+    'id': 'text_taekifas2',
+    'typography': 'text',
+    'text': 'Texti um tæki A'
+  }],
+  id: 'text_page_profile',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const notificationsA = {
+  data: [{
+    'id': 'text_psfsrofilead1',
+    'typography': 'heading',
+    'text': 'Notifications'
+  }, {
+    'id': 'text_taekasdfifas2',
+    'typography': 'text',
+    'text': 'Notification text'
+  }],
+  id: 'text_page_notifications',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+
+const configureB = {
+  data: [{
+    'id': 'text_lsdagabbss',
+    'typography': 'heading',
+    'text': 'Tæki B'
+  }, {
+    'id': 'text_lagggab2',
+    'typography': 'text',
+    'text': 'Texti um tæki B'
+  }],
+  id: 'text_page_configureBb',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const saekjaA = {
+  data: [{
+    'id': 'text_saekja1a',
+    'typography': 'heading',
+    'text': 'Tæki A'
+  }, {
+    'id': 'text_saekja1a',
+    'typography': 'text',
+    'text': 'Texti um sækja tæki A'
+  }],
+  id: 'text_page_profile',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const saekjaB = {
+  data: [{
+    'id': 'text_saekssja1b',
+    'typography': 'heading',
+    'text': 'Sækja B'
+  }, {
+    'id': 'text_saekffsja1b',
+    'typography': 'text',
+    'text': 'Texti um sækja tæki A'
+  }],
+  id: 'text_page_sssfffaprofile',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
 export const page_products = {
   data: [{
     'id': 'page_product_list',
@@ -247,20 +343,64 @@ export const main_top_menu = {
   data: [{
     'id': 'home',
     'title': 'Home',
+    'description': 'Yfirlit siðu',
+    'icon': 'material-ui: Home',
     'content': page_landing
   }, {
     'id': 'products',
-    'title': 'Vörur og þjónusta',
+    'title': 'Tæki og þjónusta',
+    'icon': 'material-ui: Devices',
+    'description': 'Tæki og þjónustur sem eru i boði',
     'path': 'products/*',
     'content': page_products
   }, {
     'id': 'stores',
-    'title': 'Verslanir',
+    'title': 'Stöðvar',
+    'description': 'Staða stöðvar um landið',
+    'highlight': 3,
+    'icon': 'material-ui: Place',
     'content': page_stores
   }, {
     'id': 'about',
     'title': 'Um okkur',
+    'description': 'Frekar upplýsingar',
+    'icon': 'material-ui: Info',
     'content': page_about
+  }, {
+    'id': 'notification1',
+    'title': 'Athugasemdir',
+    'icon': 'material-ui: NotificationsNone',
+    'highlight': 8,
+    'parent':'__primary__',
+    'content': notificationsA
+  }, {
+    'id': 'profile1',
+    'title': 'Notandi',
+    'description': 'Upplýsingar notenda',
+    'icon': 'material-ui: AccountCircle',
+    'highlight': 1,
+    'parent':'__primary__',
+    'content': profileA
+  },{
+    'id': 'configureb',
+    'title': 'Stillingar',
+    'description': 'Stillingar notenda',
+    'icon': 'material-ui: SettingsOutlined',
+    'parent':'__primary__',
+    'content': configureB
+  },{
+    'id': 'saekja1',
+    'title': 'Þarf að Sækja A',
+    'icon': 'material-ui: BuildCircleRounded',
+    'parent':'__secondary__',
+    'content': saekjaA
+  },{
+    'id': 'saekja2',
+    'title': 'Þarf að sækja B',
+    'icon': 'material-ui: BuildCircleRounded',
+    'highlight': 32,
+    'parent':'__secondary__',
+    'content': saekjaB
   }, {
     'id': 'not_found',
     'title': 'Siðan fannst ekki',

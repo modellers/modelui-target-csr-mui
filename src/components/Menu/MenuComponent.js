@@ -108,7 +108,7 @@ export const item = {
       "default": ""
     },
     "parent": {
-      "description": "Group",
+      "description": "Groups items into parents",
       "type": "string",
       "default": ""
     },
@@ -118,7 +118,7 @@ export const item = {
       "default": ""
     }
   },
-  "required": ["title"]
+  "required": ["title", "icon", "parent"]
 }
 
 export const config = {
