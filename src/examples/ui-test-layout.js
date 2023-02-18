@@ -253,6 +253,43 @@ const notificationsA = {
   }
 }
 
+const notificationsA1 = {
+  data: [{
+    'id': 'text_psfsrofilead1aaa',
+    'typography': 'heading',
+    'text': 'Notifications'
+  }, {
+    'id': 'text_taekasdfifssfas2',
+    'typography': 'text',
+    'text': 'Notification text'
+  }],
+  id: 'text_page_notificafstions',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const notificationsA2 = {
+  data: [{
+    'id': 'text_psfsrofilfsead1aaa',
+    'typography': 'heading',
+    'text': 'Notifications'
+  }, {
+    'id': 'text_taekasdfsifssfas2',
+    'typography': 'text',
+    'text': 'Notification text'
+  }],
+  id: 'text_page_notiffficafstions',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
 
 const configureB = {
   data: [{
@@ -343,11 +380,11 @@ const page_about_items = {
   data: [{
     'id': 'text_saepage_about_itemskssja1b',
     'typography': 'heading',
-    'text': 'Sækja B'
+    'text': 'About items'
   }, {
     'id': 'text_saekfpage_about_itemsfsja1b',
     'typography': 'text',
-    'text': 'Texti um sækja tæki A'
+    'text': 'Texti um about items'
   }],
   id: 'text_page_sssfpage_about_itemsffaprofile',
   schema: {},
@@ -362,11 +399,11 @@ const page_about_service = {
   data: [{
     'id': 'text_saepagepage_about_serviceskssja1b',
     'typography': 'heading',
-    'text': 'Sækja B'
+    'text': 'About þjónusta'
   }, {
     'id': 'text_saekfpage_prpage_about_servicesfsja1b',
     'typography': 'text',
-    'text': 'Texti um sækja tæki A'
+    'text': 'Texti um þjónusta'
   }],
   id: 'text_page_sspage_about_serviceemsffaprofile',
   schema: {},
@@ -419,7 +456,21 @@ export const main_top_menu = {
     'description': 'Tæki sem eru i boði',
     'content': page_about_items
   }, {
-    'id': 'notification1',
+    'id': 'notification1a',
+    'title': 'Athugasemd 1',
+    'icon': 'material-ui: NotificationsNone',
+    'highlight': 2,
+    'parent': 'notification',
+    'content': notificationsA1
+  },{
+    'id': 'notification1b',
+    'title': 'Athugasemd 2',
+    'icon': 'material-ui: NotificationsNone',
+    'highlight': 6,
+    'parent': 'notification',
+    'content': notificationsA2
+  },{
+    'id': 'notification',
     'title': 'Athugasemdir',
     'icon': 'material-ui: NotificationsNone',
     'highlight': 8,

@@ -28,6 +28,10 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MailIcon from '@mui/icons-material/Mail';
+// popup
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
 
 // react-router
 import { Routes, Route, Outlet, NavLink, Link } from 'react-router-dom';
@@ -120,10 +124,7 @@ const menu = [
 ];
 
 function hasChildren(item, data) {
-  console.info("-------" + item.id)
   const children = data[item.id];
-  console.info("-------" + data)
-
   if (children === undefined) {
     return false;
   }
@@ -139,9 +140,13 @@ function hasChildren(item, data) {
   return true;
 }
 
+const getPath = (item) => {
+  return item.id || item.path;
+}
+
 const SingleLevel = ({ item, data }) => {
   return (
-    <ListItem button>
+    <ListItem component={NavLink} to={getPath(item)}>
       <ListItemIcon>{ getIcon(item.icon) }</ListItemIcon>
       <ListItemText primary={item.title} />
     </ListItem>
@@ -158,12 +163,12 @@ const MultiLevel = ({ item, data }) => {
 
   return (
     <React.Fragment>
-      <ListItem button onClick={handleClick}>
+      <ListItem  component={NavLink} to={getPath(item)} onClick={handleClick}>
         <ListItemIcon>{ getIcon(item.icon) }</ListItemIcon>
         <ListItemText primary={item.title} />
         {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={open} timeout="auto" unmountOnExit  style={{backgroundColor:'#00000008'}}>
         <List component="div" disablePadding>
           {children.map((child, key) => (
             <MenuItem key={key} item={child} data={data} />
@@ -215,25 +220,48 @@ export function RenderListMenuItems({ page_not_found, data, parent, position }) 
  return data[parent].map((item, key) => <MenuItem key={key} item={item} data={data} />);
 }
 
-export function RenderIconMenuItems({ page_not_found, data }) {
+function MenuPopupState(item, data) {
+  return (
+    <PopupState variant="popover" popupId="demo-popup-menu">
+      {(popupState) => (
+        <React.Fragment>
+          <Button variant="contained" {...bindTrigger(popupState)}>
+            Dashboard
+          </Button>
+          <Menu {...bindMenu(popupState)}>
+            <MenuItem onClick={popupState.close} item={item} data={data} >Profile</MenuItem>
+            <MenuItem onClick={popupState.close} item={item} data={data} >My account</MenuItem>
+            <MenuItem onClick={popupState.close} item={item} data={data} >Logout</MenuItem>
+          </Menu>
+        </React.Fragment>
+      )}
+    </PopupState>
+  );
+}
+
+export function RenderIconMenuItems({ page_not_found, data, parent }) {
   /**
    * Renders a list menu grouping the parent nodes together. Depending on options we decide where to place these items
    * 
    */
+  const items = data[parent] || [];
   return (
     <React.Fragment>
         {
-          data.map((itm, idx) => {
+          items.map((itm, idx) => {
             const url = itm.id;
             if ((page_not_found !== itm.id) && (itm.unlisted !== true)) {
               // <List component="nav"> ... <Divider />
-              return (
-              <IconButton component={NavLink} title={itm.description || itm.title} to={url} color="inherit">
-                <Badge badgeContent={itm.highlight || 0} color="secondary">
-                  { getIcon(itm.icon) }
-                </Badge>
-              </IconButton>
-              )
+              if (hasChildren(itm, data) ){ return MenuPopupState(itm, data); }
+              else {
+                return (
+                  <IconButton component={NavLink} title={itm.description || itm.title} to={url} color="inherit">
+                    <Badge badgeContent={itm.highlight || 0} color="secondary">
+                      { getIcon(itm.icon) }
+                    </Badge>
+                  </IconButton>
+                  )
+              }
             }
           })
         }
@@ -355,7 +383,7 @@ export function RenderListMenu({ parent, page_not_found, data, position, navigat
             >
               Dashbaord
             </Typography>
-            <RenderIconMenuItems page_not_found={page_not_found} data={grouped_parents["__primary__"]} />
+            <RenderIconMenuItems page_not_found={page_not_found} data={grouped_parents} parent={"__primary__"} />
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
