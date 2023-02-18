@@ -257,13 +257,49 @@ const notificationsA1 = {
   data: [{
     'id': 'text_psfsrofilead1aaa',
     'typography': 'heading',
-    'text': 'Notifications'
+    'text': 'Note 1'
   }, {
     'id': 'text_taekasdfifssfas2',
     'typography': 'text',
-    'text': 'Notification text'
+    'text': 'Note 1 text'
   }],
   id: 'text_page_notificafstions',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+const notificationsA1a = {
+  data: [{
+    'id': 'text_psfsrofilead1aaffa',
+    'typography': 'heading',
+    'text': 'Note 1 aaa'
+  }, {
+    'id': 'text_taekasdfifssfas2',
+    'typography': 'text',
+    'text': 'Note 1 text aaa'
+  }],
+  id: 'text_page_notificafstions',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+const notificationsA1b = {
+  data: [{
+    'id': 'text_psfsrofilead1assaa',
+    'typography': 'heading',
+    'text': 'Note 1 bbbb'
+  }, {
+    'id': 'text_taekasdfifssdfas2',
+    'typography': 'text',
+    'text': 'Note 1 text bbb'
+  }],
+  id: 'text_page_notificafstfsions',
   schema: {},
   type: 'texts',
   config: {
@@ -276,11 +312,11 @@ const notificationsA2 = {
   data: [{
     'id': 'text_psfsrofilfsead1aaa',
     'typography': 'heading',
-    'text': 'Notifications'
+    'text': 'Note 2'
   }, {
     'id': 'text_taekasdfsifssfas2',
     'typography': 'text',
-    'text': 'Notification text'
+    'text': 'Note 2 text'
   }],
   id: 'text_page_notiffficafstions',
   schema: {},
@@ -462,6 +498,20 @@ export const main_top_menu = {
     'highlight': 2,
     'parent': 'notification',
     'content': notificationsA1
+  }, {
+    'id': 'notification1aaaa',
+    'title': 'Aasdfa asd etail',
+    'icon': 'material-ui: NotificationsNone',
+    'highlight': 2,
+    'parent': 'notification1a',
+    'content': notificationsA1a
+  },{
+    'id': 'notification1abbbb',
+    'title': 'Athugasemasdf  asdfa',
+    'icon': 'material-ui: NotificationsNone',
+    'highlight': 2,
+    'parent': 'notification1a',
+    'content': notificationsA1b
   },{
     'id': 'notification1b',
     'title': 'Athugasemd 2',

@@ -226,13 +226,13 @@ function MenuPopupState(item, data) {
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
         <React.Fragment>
-          <Button variant="contained" {...bindTrigger(popupState)}>
-            Dashboard
-          </Button>
+          <IconButton variant="contained" {...bindTrigger(popupState)} component={NavLink} title={item.description || item.title} to={getPath(item)} color="inherit">
+            { getIcon(item.icon) }
+          </IconButton>
           <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={popupState.close} item={item} data={data} >Profile</MenuItem>
-            <MenuItem onClick={popupState.close} item={item} data={data} >My account</MenuItem>
-            <MenuItem onClick={popupState.close} item={item} data={data} >Logout</MenuItem>
+          {children.map((itmx, idx) => {
+            return  <MenuItem component={NavLink} to={getPath(itmx)} onClick={popupState.close} item={itmx} data={data} />
+          }) }
           </Menu>
         </React.Fragment>
       )}
