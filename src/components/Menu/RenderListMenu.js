@@ -221,6 +221,7 @@ export function RenderListMenuItems({ page_not_found, data, parent, position }) 
 }
 
 function MenuPopupState(item, data) {
+  const children = data[item.id];
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
