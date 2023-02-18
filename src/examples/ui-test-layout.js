@@ -339,6 +339,44 @@ export const page_products = {
   }
 }
 
+const page_about_items = {
+  data: [{
+    'id': 'text_saepage_about_itemskssja1b',
+    'typography': 'heading',
+    'text': 'Sækja B'
+  }, {
+    'id': 'text_saekfpage_about_itemsfsja1b',
+    'typography': 'text',
+    'text': 'Texti um sækja tæki A'
+  }],
+  id: 'text_page_sssfpage_about_itemsffaprofile',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
+const page_about_service = {
+  data: [{
+    'id': 'text_saepagepage_about_serviceskssja1b',
+    'typography': 'heading',
+    'text': 'Sækja B'
+  }, {
+    'id': 'text_saekfpage_prpage_about_servicesfsja1b',
+    'typography': 'text',
+    'text': 'Texti um sækja tæki A'
+  }],
+  id: 'text_page_sspage_about_serviceemsffaprofile',
+  schema: {},
+  type: 'texts',
+  config: {
+    options: {
+    }
+  }
+}
+
 export const main_top_menu = {
   data: [{
     'id': 'home',
@@ -366,6 +404,20 @@ export const main_top_menu = {
     'description': 'Frekar upplýsingar',
     'icon': 'material-ui: Info',
     'content': page_about
+  }, {
+    'id': 'about_service',
+    'title': 'Þjónusta',
+    'parent': 'about',
+    'icon': 'material-ui: Devices',
+    'description': 'Þjónustur sem eru i boði',
+    'content': page_about_service
+  }, {
+    'id': 'about_items',
+    'title': 'Tæki',
+    'parent': 'about',
+    'icon': 'material-ui: Devices',
+    'description': 'Tæki sem eru i boði',
+    'content': page_about_items
   }, {
     'id': 'notification1',
     'title': 'Athugasemdir',

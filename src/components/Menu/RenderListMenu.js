@@ -119,8 +119,10 @@ const menu = [
   }
 ];
 
-function hasChildren(item) {
-  const { items: children } = item;
+function hasChildren(item, data) {
+  console.info("-------" + item.id)
+  const children = data[item.id];
+  console.info("-------" + data)
 
   if (children === undefined) {
     return false;
@@ -137,17 +139,17 @@ function hasChildren(item) {
   return true;
 }
 
-const SingleLevel = ({ item }) => {
+const SingleLevel = ({ item, data }) => {
   return (
     <ListItem button>
-      <ListItemIcon>{item.icon}</ListItemIcon>
+      <ListItemIcon>{ getIcon(item.icon) }</ListItemIcon>
       <ListItemText primary={item.title} />
     </ListItem>
   );
 };
 
-const MultiLevel = ({ item }) => {
-  const { items: children } = item;
+const MultiLevel = ({ item, data }) => {
+  const children = data[item.id];
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
@@ -157,14 +159,14 @@ const MultiLevel = ({ item }) => {
   return (
     <React.Fragment>
       <ListItem button onClick={handleClick}>
-        <ListItemIcon>{item.icon}</ListItemIcon>
+        <ListItemIcon>{ getIcon(item.icon) }</ListItemIcon>
         <ListItemText primary={item.title} />
         {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {children.map((child, key) => (
-            <MenuItem key={key} item={child} />
+            <MenuItem key={key} item={child} data={data} />
           ))}
         </List>
       </Collapse>
@@ -172,12 +174,12 @@ const MultiLevel = ({ item }) => {
   );
 };
 
-const MenuItem = ({ item }) => {
-  const Component = hasChildren(item) ? MultiLevel : SingleLevel;
-  return <Component item={item} />;
+const MenuItem = ({ item, data }) => {
+  const Component = hasChildren(item, data) ? MultiLevel : SingleLevel;
+  return <Component item={item} data={data} />
 };
 
-export function RenderListMenuItems({ page_not_found, data, position }) {
+export function RenderListMenuItems({ page_not_found, data, parent, position }) {
   /**
    * Renders a list menu grouping the parent nodes together. Depending on options we decide where to place these items
    * Parameters:
@@ -210,7 +212,7 @@ export function RenderListMenuItems({ page_not_found, data, position }) {
     </React.Fragment>
   )
   */
- return menu.map((item, key) => <MenuItem key={key} item={item} />);
+ return data[parent].map((item, key) => <MenuItem key={key} item={item} data={data} />);
 }
 
 export function RenderIconMenuItems({ page_not_found, data }) {
@@ -353,7 +355,7 @@ export function RenderListMenu({ parent, page_not_found, data, position, navigat
             >
               Dashbaord
             </Typography>
-            <RenderIconMenuItems page_not_found={page_not_found} data={grouped_parents["__primary__"]}/>
+            <RenderIconMenuItems page_not_found={page_not_found} data={grouped_parents["__primary__"]} />
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -371,10 +373,10 @@ export function RenderListMenu({ parent, page_not_found, data, position, navigat
           </Toolbar>
           <Divider />
           <List component="nav">
-            <RenderListMenuItems page_not_found={page_not_found} data={grouped_parents[""]} position={'left'} />
+            <RenderListMenuItems page_not_found={page_not_found} data={grouped_parents} parent={""} position={'left'} />
           </List>
           <List component="nav" className='MenuSecondaryNavigationList' style={{position:'absolute', bottom:0}}>
-            <RenderListMenuItems page_not_found={page_not_found} data={grouped_parents["__secondary__"]} position={'left'} />
+            <RenderListMenuItems page_not_found={page_not_found} data={grouped_parents} parent={"__secondary__"} position={'left'} />
           </List>
         </Drawer>
         <Box
