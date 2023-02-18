@@ -421,15 +421,20 @@ export function RenderListMenu({ parent, page_not_found, data, position, navigat
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              <Outlet/>
-            </Grid>
-          </Container>
+          <Outlet/>
         </Box>
       </Box>
     </ThemeProvider>    
   )
-
 }
+
 export default RenderListMenu;
+
+/**
+ *       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+              
+            </Grid>
+          </Container>
+
+ */

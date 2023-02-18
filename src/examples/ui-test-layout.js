@@ -257,11 +257,11 @@ const notificationsA1 = {
   data: [{
     'id': 'text_psfsrofilead1aaa',
     'typography': 'heading',
-    'text': 'Note 1'
+    'text': 'Note 1 parent'
   }, {
     'id': 'text_taekasdfifssfas2',
     'typography': 'text',
-    'text': 'Note 1 text'
+    'text': 'Note 1 text asd fasd asdf '
   }],
   id: 'text_page_notificafstions',
   schema: {},
