@@ -22,7 +22,6 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import ListItem from "@mui/material/ListItem";
 import Collapse from '@mui/material/Collapse';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -30,98 +29,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MailIcon from '@mui/icons-material/Mail';
 // popup
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 
 // react-router
 import { Routes, Route, Outlet, NavLink, Link } from 'react-router-dom';
 // utils
 import getIcon from '../../util/IconUtil';
-
-const menu = [
-  {
-    icon: <MailIcon />,
-    title: "Home",
-    items: []
-  },
-  {
-    icon: <MailIcon />,
-    title: "Education",
-    items: [
-      {
-        title: "Technical Analysis",
-        items: [
-          {
-            title: "The Dow Theory",
-            to: "/thedowtheory"
-          },
-          {
-            title: "Charts & Chart Patterns",
-            to: "/chart"
-          },
-          {
-            title: "Trend & Trend Lines",
-            to: "/trendlines"
-          },
-          {
-            title: "Support & Resistance",
-            to: "/sandr"
-          }
-        ]
-      },
-      {
-        title: "Fundamental Analysis",
-        items: [
-          {
-            title: "The Dow Theory",
-            to: "/thedowtheory"
-          },
-          {
-            title: "Charts & Chart Patterns",
-            to: "/chart"
-          },
-          {
-            title: "Trend & Trend Lines",
-            to: "/trendlines"
-          },
-          {
-            title: "Support & Resistance",
-            to: "/sandr"
-          }
-        ]
-      },
-      {
-        title: "Elliot Wave Analysis",
-        items: [
-          {
-            title: "The Dow Theory",
-            to: "/thedowtheory"
-          },
-          {
-            title: "Charts & Chart Patterns",
-            to: "/chart"
-          },
-          {
-            title: "Trend & Trend Lines",
-            to: "/trendlines"
-          },
-          {
-            title: "Support & Resistance",
-            to: "/sandr"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    icon: <MailIcon />,
-    title: "Options"
-  },
-  {
-    icon: <MailIcon />,
-    title: "Blog"
-  }
-];
 
 function hasChildren(item, data) {
   const children = data[item.id];
@@ -147,7 +60,11 @@ const getPath = (item) => {
 const SingleLevel = ({ item, data }) => {
   return (
     <ListItem component={NavLink} to={getPath(item)}>
-      <ListItemIcon>{ getIcon(item.icon) }</ListItemIcon>
+      <ListItemIcon>
+        <Badge badgeContent={item.highlight || 0} color="secondary">
+        { getIcon(item.icon) }
+        </Badge>    
+      </ListItemIcon>
       <ListItemText primary={item.title} />
     </ListItem>
   );
@@ -164,8 +81,12 @@ const MultiLevel = ({ item, data }) => {
   return (
     <React.Fragment>
       <ListItem  component={NavLink} to={getPath(item)} onClick={handleClick}>
-        <ListItemIcon>{ getIcon(item.icon) }</ListItemIcon>
-        <ListItemText primary={item.title} />
+        <ListItemIcon>
+          <Badge badgeContent={item.highlight || 0} color="secondary">
+          { getIcon(item.icon) }
+          </Badge>    
+        </ListItemIcon>
+        <ListItemText primary={item.title} title={item.description || item.title} />
         {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit  style={{backgroundColor:'#00000008'}}>
@@ -193,41 +114,20 @@ export function RenderListMenuItems({ page_not_found, data, parent, position }) 
    * Notes:
    *  - https://stackoverflow.com/questions/63297109/nested-sidebar-menu-with-material-ui-and-reactjs 
    */
-  /*
-  return (
-    <React.Fragment>
-        {
-          data.map((itm, idx) => {
-            const url = itm.id;
-            if ((page_not_found !== itm.id) && (itm.unlisted !== true)) {
-              // <List component="nav"> ... <Divider />
-              return (
-                <ListItemButton component={NavLink} to={url}>
-                  <ListItemIcon>
-                  <Badge badgeContent={itm.highlight || 0} color="secondary">
-                    { getIcon(itm.icon) }
-                  </Badge>
-                  </ListItemIcon>
-                  <ListItemText primary={itm.title} title={itm.description || itm.title} />
-                </ListItemButton>
-              )
-            }
-          })
-        }
-    </React.Fragment>
-  )
-  */
+
  return data[parent].map((item, key) => <MenuItem key={key} item={item} data={data} />);
 }
 
 function MenuPopupState(item, data) {
   const children = data[item.id];
   return (
-    <PopupState variant="popover" popupId="demo-popup-menu">
+    <PopupState variant="popover" popupId={item.id + "-popup-menu"}>
       {(popupState) => (
         <React.Fragment>
           <IconButton variant="contained" {...bindTrigger(popupState)} component={NavLink} title={item.description || item.title} to={getPath(item)} color="inherit">
-            { getIcon(item.icon) }
+            <Badge badgeContent={item.highlight || 0} color="secondary">
+              { getIcon(item.icon) }
+            </Badge>
           </IconButton>
           <Menu {...bindMenu(popupState)}>
           {children.map((itmx, idx) => {
