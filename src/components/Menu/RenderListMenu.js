@@ -23,10 +23,159 @@ import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import ListItem from "@mui/material/ListItem";
+import Collapse from '@mui/material/Collapse';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MailIcon from '@mui/icons-material/Mail';
+
 // react-router
 import { Routes, Route, Outlet, NavLink, Link } from 'react-router-dom';
 // utils
 import getIcon from '../../util/IconUtil';
+
+const menu = [
+  {
+    icon: <MailIcon />,
+    title: "Home",
+    items: []
+  },
+  {
+    icon: <MailIcon />,
+    title: "Education",
+    items: [
+      {
+        title: "Technical Analysis",
+        items: [
+          {
+            title: "The Dow Theory",
+            to: "/thedowtheory"
+          },
+          {
+            title: "Charts & Chart Patterns",
+            to: "/chart"
+          },
+          {
+            title: "Trend & Trend Lines",
+            to: "/trendlines"
+          },
+          {
+            title: "Support & Resistance",
+            to: "/sandr"
+          }
+        ]
+      },
+      {
+        title: "Fundamental Analysis",
+        items: [
+          {
+            title: "The Dow Theory",
+            to: "/thedowtheory"
+          },
+          {
+            title: "Charts & Chart Patterns",
+            to: "/chart"
+          },
+          {
+            title: "Trend & Trend Lines",
+            to: "/trendlines"
+          },
+          {
+            title: "Support & Resistance",
+            to: "/sandr"
+          }
+        ]
+      },
+      {
+        title: "Elliot Wave Analysis",
+        items: [
+          {
+            title: "The Dow Theory",
+            to: "/thedowtheory"
+          },
+          {
+            title: "Charts & Chart Patterns",
+            to: "/chart"
+          },
+          {
+            title: "Trend & Trend Lines",
+            to: "/trendlines"
+          },
+          {
+            title: "Support & Resistance",
+            to: "/sandr"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    icon: <MailIcon />,
+    title: "Options"
+  },
+  {
+    icon: <MailIcon />,
+    title: "Blog"
+  }
+];
+
+function hasChildren(item) {
+  const { items: children } = item;
+
+  if (children === undefined) {
+    return false;
+  }
+
+  if (children.constructor !== Array) {
+    return false;
+  }
+
+  if (children.length === 0) {
+    return false;
+  }
+
+  return true;
+}
+
+const SingleLevel = ({ item }) => {
+  return (
+    <ListItem button>
+      <ListItemIcon>{item.icon}</ListItemIcon>
+      <ListItemText primary={item.title} />
+    </ListItem>
+  );
+};
+
+const MultiLevel = ({ item }) => {
+  const { items: children } = item;
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen((prev) => !prev);
+  };
+
+  return (
+    <React.Fragment>
+      <ListItem button onClick={handleClick}>
+        <ListItemIcon>{item.icon}</ListItemIcon>
+        <ListItemText primary={item.title} />
+        {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+      </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          {children.map((child, key) => (
+            <MenuItem key={key} item={child} />
+          ))}
+        </List>
+      </Collapse>
+    </React.Fragment>
+  );
+};
+
+const MenuItem = ({ item }) => {
+  const Component = hasChildren(item) ? MultiLevel : SingleLevel;
+  return <Component item={item} />;
+};
 
 export function RenderListMenuItems({ page_not_found, data, position }) {
   /**
@@ -37,6 +186,7 @@ export function RenderListMenuItems({ page_not_found, data, position }) {
    * Notes:
    *  - https://stackoverflow.com/questions/63297109/nested-sidebar-menu-with-material-ui-and-reactjs 
    */
+  /*
   return (
     <React.Fragment>
         {
@@ -59,6 +209,8 @@ export function RenderListMenuItems({ page_not_found, data, position }) {
         }
     </React.Fragment>
   )
+  */
+ return menu.map((item, key) => <MenuItem key={key} item={item} />);
 }
 
 export function RenderIconMenuItems({ page_not_found, data }) {
@@ -160,7 +312,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const mdTheme = createTheme();
-export function RenderListMenu({ parent, page_not_found, data, position }) {
+
+export function RenderListMenu({ parent, page_not_found, data, position, navigation }) {
 
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
@@ -198,7 +351,7 @@ export function RenderListMenu({ parent, page_not_found, data, position }) {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              Dashbaord
             </Typography>
             <RenderIconMenuItems page_not_found={page_not_found} data={grouped_parents["__primary__"]}/>
           </Toolbar>
