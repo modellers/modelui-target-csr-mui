@@ -18,15 +18,12 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ListItem from "@mui/material/ListItem";
 import Collapse from '@mui/material/Collapse';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MailIcon from '@mui/icons-material/Mail';
 // popup
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Menu from '@mui/material/Menu';
@@ -54,12 +51,18 @@ function hasChildren(item, data) {
 }
 
 const getPath = (item) => {
+  if (!item.content){ return null; } // no path if no conent to display
   return item.id || item.path;
 }
 
-const SingleLevel = ({ item, data }) => {
+const SingleLevel = ({ item, data, popupState }) => {
+
+  const handleClose = () => { // closes popup menu only if root node
+    if(popupState){ popupState.close(); } 
+  }
+
   return (
-    <ListItem component={NavLink} to={getPath(item)}>
+    <ListItem component={NavLink} to={getPath(item)} onClick={handleClose} >
       <ListItemIcon>
         <Badge badgeContent={item.highlight || 0} color="secondary">
         { getIcon(item.icon) }
@@ -70,7 +73,7 @@ const SingleLevel = ({ item, data }) => {
   );
 };
 
-const MultiLevel = ({ item, data }) => {
+const MultiLevel = ({ item, data, popupState }) => {
   const children = data[item.id];
   const [open, setOpen] = React.useState(false);
 
@@ -92,7 +95,7 @@ const MultiLevel = ({ item, data }) => {
       <Collapse in={open} timeout="auto" unmountOnExit  style={{backgroundColor:'#00000008'}}>
         <List component="div" disablePadding>
           {children.map((child, key) => (
-            <MenuItem key={key} item={child} data={data} />
+            <MenuItem key={key} item={child} data={data} popupState={popupState} />
           ))}
         </List>
       </Collapse>
@@ -100,9 +103,9 @@ const MultiLevel = ({ item, data }) => {
   );
 };
 
-const MenuItem = ({ item, data }) => {
+const MenuItem = ({ item, data, popupState }) => {
   const Component = hasChildren(item, data) ? MultiLevel : SingleLevel;
-  return <Component item={item} data={data} />
+  return <Component item={item} data={data} popupState={popupState} />
 };
 
 export function RenderListMenuItems({ page_not_found, data, parent, position }) {
@@ -131,7 +134,7 @@ function MenuPopupState(item, data) {
           </IconButton>
           <Menu {...bindMenu(popupState)}>
           {children.map((itmx, idx) => {
-            return  <MenuItem component={NavLink} to={getPath(itmx)} onClick={popupState.close} item={itmx} data={data} />
+            return  <MenuItem component={NavLink} to={getPath(itmx)} onClick={popupState.close} item={itmx} data={data} popupState={popupState} />
           }) }
           </Menu>
         </React.Fragment>
@@ -151,19 +154,17 @@ export function RenderIconMenuItems({ page_not_found, data, parent }) {
         {
           items.map((itm, idx) => {
             const url = itm.id;
-            if ((page_not_found !== itm.id) && (itm.unlisted !== true)) {
-              // <List component="nav"> ... <Divider />
-              if (hasChildren(itm, data) ){ return MenuPopupState(itm, data); }
-              else {
-                return (
-                  <IconButton component={NavLink} title={itm.description || itm.title} to={url} color="inherit">
-                    <Badge badgeContent={itm.highlight || 0} color="secondary">
-                      { getIcon(itm.icon) }
-                    </Badge>
-                  </IconButton>
-                  )
-              }
-            }
+            // <List component="nav"> ... <Divider />
+            if (hasChildren(itm, data) ){ return MenuPopupState(itm, data); }
+            else {
+              return (
+                <IconButton component={NavLink} title={itm.description || itm.title} to={url} color="inherit">
+                  <Badge badgeContent={itm.highlight || 0} color="secondary">
+                    { getIcon(itm.icon) }
+                  </Badge>
+                </IconButton>
+                )
+            }            
           })
         }
     </React.Fragment>
@@ -173,10 +174,13 @@ export function RenderIconMenuItems({ page_not_found, data, parent }) {
 function groupByParents(data) {
   // Returns a list of sub list based on parent name
   const groups = {};
+  // const counts = {};
   data.forEach(function(itm){
     // const itm = data[i];
     const parent_name = itm.parent || "";
     if (!groups[parent_name]) { groups[parent_name] = []; }
+    // counts[parent_name] = (counts[parent_name] || 0) + itm.highlight;
+    // itm.highlight = counts[parent_name];
     groups[parent_name].push(itm)
   });
   return groups;
@@ -245,7 +249,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 export function RenderListMenu({ parent, page_not_found, data, position, navigation }) {
-
+  
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);

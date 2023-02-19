@@ -388,7 +388,7 @@ export const page_products = {
   data: [{
     'id': 'page_product_list',
     'title': 'Products',
-    'unlisted': true,
+    'parent': '__hidden__',
     'content': page_product_list
   }, {
     'id': 'page_product_1_id',
@@ -476,7 +476,8 @@ export const main_top_menu = {
     'title': 'Um okkur',
     'description': 'Frekar upplýsingar',
     'icon': 'material-ui: Info',
-    'content': page_about
+    'highlight': 1,
+    'content': undefined // page_about
   }, {
     'id': 'about_service',
     'title': 'Þjónusta',
@@ -523,7 +524,7 @@ export const main_top_menu = {
     'id': 'notification',
     'title': 'Athugasemdir',
     'icon': 'material-ui: NotificationsNone',
-    'highlight': 8,
+    'highlight': 1,
     'parent':'__primary__',
     'content': notificationsA
   }, {
@@ -556,6 +557,7 @@ export const main_top_menu = {
     'content': saekjaB
   }, {
     'id': 'not_found',
+    'parent':'__hidden__',
     'title': 'Siðan fannst ekki',
     'content': page_matchrest
   }],

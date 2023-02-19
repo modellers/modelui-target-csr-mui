@@ -201,19 +201,23 @@ class MenuComponent extends structs.ListBase.ListBase {
   }
 
   renderPageContent = function (item, landing, parent, page_not_found, manager) {
-    const element = this.renderElementContent(item.content, manager);
-    const path = parent + (item.path || item.id)
-    if (landing === item.id) { // return both as index and with path if this is the landing page
-      return (
-        <React.Fragment>
-          <Route key={item.id + "idx"} index element={element} />
-          <Route key={item.id} path={path} index element={element} />
-        </React.Fragment>
-      )
-    } else if (page_not_found === item.id) {
-      return (<Route key={item.id} path="*" element={element} />)
-    } else {
-      return (<Route key={item.id} path={path} element={element} />)
+    if (item.content){
+      const element = this.renderElementContent(item.content, manager);
+      const path = parent + (item.path || item.id)
+      if (landing === item.id) { // return both as index and with path if this is the landing page
+        return (
+          <React.Fragment>
+            <Route key={item.id + "idx"} index element={element} />
+            <Route key={item.id} path={path} index element={element} />
+          </React.Fragment>
+        )
+      } else if (page_not_found === item.id) {
+        return (<Route key={item.id} path="*" element={element} />)
+      } else {
+        return (<Route key={item.id} path={path} element={element} />)
+      }
+    }else {
+      return null;
     }
   }
 
