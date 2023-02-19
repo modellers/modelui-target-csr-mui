@@ -526,7 +526,7 @@ export const main_top_menu = {
     'icon': 'material-ui: NotificationsNone',
     'highlight': 1,
     'parent':'__primary__',
-    'content': notificationsA
+    'content': undefined // notificationsA
   }, {
     'id': 'profile1',
     'title': 'Notandi',
