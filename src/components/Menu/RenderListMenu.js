@@ -32,7 +32,6 @@ import Menu from '@mui/material/Menu';
 import { Routes, Route, Outlet, NavLink, Link } from 'react-router-dom';
 // utils
 import getIcon from '../../util/IconUtil';
-import { item } from 'modelui-core-runtime/dist/event/TreeBase';
 
 function hasChildren(item, data) {
   const children = data[item.id];
@@ -93,8 +92,10 @@ const MultiLevel = ({ item, data, popupState }) => {
         <ListItemText primary={item.title} title={item.description || item.title} />
         {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit  style={{backgroundColor:'#00000008'}}>
-        <List component="div" disablePadding>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding
+         style={{backgroundColor:'#00000008'}} // FIXME: allow user to style
+        >
           {children.map((child, key) => (
             <MenuItem key={key} item={child} data={data} popupState={popupState} />
           ))}
