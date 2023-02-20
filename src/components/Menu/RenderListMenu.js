@@ -32,6 +32,7 @@ import Menu from '@mui/material/Menu';
 import { Routes, Route, Outlet, NavLink, Link } from 'react-router-dom';
 // utils
 import getIcon from '../../util/IconUtil';
+import { item } from 'modelui-core-runtime/dist/event/TreeBase';
 
 function hasChildren(item, data) {
   const children = data[item.id];
@@ -124,17 +125,17 @@ export function RenderListMenuItems({ page_not_found, data, parent, position }) 
 function MenuPopupState(item, data) {
   const children = data[item.id];
   return (
-    <PopupState variant="popover" popupId={item.id + "-popup-menu"}>
+    <PopupState key={"popupstate-"+item.id} variant="popover" popupId={item.id + "-popup-menu"}>
       {(popupState) => (
-        <React.Fragment>
-          <IconButton variant="contained" {...bindTrigger(popupState)} component={NavLink} title={item.description || item.title} to={getPath(item)} color="inherit">
-            <Badge badgeContent={item.highlight || 0} color="secondary">
+        <React.Fragment key={"pfragment-"+item.id}>
+          <IconButton  key={"iconbutton-"+item.id} variant="contained" {...bindTrigger(popupState)} component={NavLink} title={item.description || item.title} to={getPath(item)} color="inherit">
+            <Badge  key={"badge-"+item.id} badgeContent={item.highlight || 0} color="secondary">
               { getIcon(item.icon) }
             </Badge>
           </IconButton>
-          <Menu {...bindMenu(popupState)}>
+          <Menu  key={"menu-"+item.id} {...bindMenu(popupState)}>
           {children.map((itmx, idx) => {
-            return  <MenuItem component={NavLink} to={getPath(itmx)} onClick={popupState.close} item={itmx} data={data} popupState={popupState} />
+            return  <MenuItem key={"menuitem-"+item.id} component={NavLink} to={getPath(itmx)} onClick={popupState.close} item={itmx} data={data} popupState={popupState} />
           }) }
           </Menu>
         </React.Fragment>
@@ -158,8 +159,8 @@ export function RenderIconMenuItems({ page_not_found, data, parent }) {
             if (hasChildren(itm, data) ){ return MenuPopupState(itm, data); }
             else {
               return (
-                <IconButton component={NavLink} title={itm.description || itm.title} to={url} color="inherit">
-                  <Badge badgeContent={itm.highlight || 0} color="secondary">
+                <IconButton key={"iconbutton-"+itm.id} component={NavLink} title={itm.description || itm.title} to={url} color="inherit">
+                  <Badge key={"badge-"+itm.id} badgeContent={itm.highlight || 0} color="secondary">
                     { getIcon(itm.icon) }
                   </Badge>
                 </IconButton>

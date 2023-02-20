@@ -206,7 +206,7 @@ class MenuComponent extends structs.ListBase.ListBase {
       const path = parent + (item.path || item.id)
       if (landing === item.id) { // return both as index and with path if this is the landing page
         return (
-          <React.Fragment>
+          <React.Fragment key={"fragment-" + item.id}>
             <Route key={item.id + "idx"} index element={element} />
             <Route key={item.id} path={path} index element={element} />
           </React.Fragment>
@@ -230,8 +230,8 @@ class MenuComponent extends structs.ListBase.ListBase {
     if ((!landing) && (this.state.data.length)) { landing = this.state.data[0].id; } // select default landing page if not set
 
     return (
-      <Routes>
-        <Route element={<ContentLayout parent={this.props.config.options.parent} page_not_found={page_not_found} data={this.state.data} />} >
+      <Routes key={"routes-" + this.props.id}>
+        <Route key={"route-" + this.props.id} element={<ContentLayout parent={this.props.config.options.parent} page_not_found={page_not_found} data={this.state.data} />} >
           {
             this.state.data.map((itm, idx) => {
               return (this.renderPageContent(itm, landing, parent, page_not_found, manager))
