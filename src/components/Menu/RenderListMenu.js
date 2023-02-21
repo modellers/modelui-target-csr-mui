@@ -136,7 +136,7 @@ function MenuPopupState(item, data) {
           </IconButton>
           <Menu  key={"menu-"+item.id} {...bindMenu(popupState)}>
           {children.map((itmx, idx) => {
-            return  <MenuItem key={"menuitem-"+item.id} component={NavLink} to={getPath(itmx)} onClick={popupState.close} item={itmx} data={data} popupState={popupState} />
+            return  <MenuItem key={"menuitem-"+item.id+idx} component={NavLink} to={getPath(itmx)} onClick={popupState.close} item={itmx} data={data} popupState={popupState} />
           }) }
           </Menu>
         </React.Fragment>
