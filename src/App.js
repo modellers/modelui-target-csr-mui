@@ -10,13 +10,14 @@ import axios from 'axios';  // fetching json
 // eventfull core
 import AppBase from './AppBase';
 
-// firebase -------- start
+/* firebase -------- start
 import { config_firebase } from './config';
 import firebase from 'firebase/app';
 // Instantiate a Firebase app.
 export const firebaseApp = firebase.initializeApp(config_firebase);
 // DOES NOT WORK firebase.analytics();
 // firebase -------- stop
+*/
 
 class App extends AppBase {
 
