@@ -10,13 +10,13 @@ const app = express();
 
 
 // serve static assets
-app.get( /\.(js|css|map|ico|json|png|jpg|svg)$/, express.static( path.resolve( __dirname, '../build' ) ) );
+app.get(/\.(js|css|map|ico|json|png|jpg|svg)$/, express.static(path.resolve(__dirname, '../build')));
 
 app.get("*", (req, res) => {
-  fs.readFile(path.resolve("./build/index.html"), "utf-8", (err, data) => {
+  fs.readFile(path.resolve("./public/index.html"), "utf-8", (err, data) => {
     if (err) {
-      console.err(err);
-      return res.status(500).send("Some error happened");
+      // console.err(err);
+      return res.status(500).send("Some error happened " + JSON.stringify(err));
     }
 
     const html = ReactDOMServer.renderToString(
@@ -25,9 +25,9 @@ app.get("*", (req, res) => {
       </StaticRouter>
     );
     // set header and status
-    res.contentType( 'text/html' );
-    res.status( 200 );
-    
+    res.contentType('text/html');
+    res.status(200);
+
     return res.send(
       data.replace('<div id="root"></div>', `<div id="root">${html}</div>`)
     );
@@ -35,5 +35,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(3005, () => {
-  console.log("App is launched");
+  console.log("App is launched https://localhost:3005 ");
 });

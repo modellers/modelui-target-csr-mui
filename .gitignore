@@ -24,3 +24,5 @@ yarn-error.log*
 *.log
 .env
 .firebase/hosting.*.cache
+
+/src/modelui-core-runtime
