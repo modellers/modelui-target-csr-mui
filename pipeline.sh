@@ -6,17 +6,12 @@
 # delete node_modules/moduleui-core-runtime
 # export DISABLE_ESLINT_PLUGIN=true 
 # replace imports
-cd src/components/
+cd src
+find . -name AppBase.js -maxdepth 1  -type f -exec sed -i '' -e  "s/import { layout } from 'modelui-core-runtime';/import { layout } from '.\/modelui-core-runtime';/g" {} \;
+cd components/
 find . -name Components.js -maxdepth 1 -type f -exec sed -i '' -e  "s/import { layout } from 'modelui-core-runtime';/import { layout } from '..\/modelui-core-runtime';/g" {} \;
 find . -name Components.js -maxdepth 1 -type f -exec sed -i '' -e  "s/import { layout } from 'modelui-core-runtime';/import { layout } from '..\/modelui-core-runtime';/g" {} \;
 
 find . -type f -exec sed -i '' -e  "s/import { layout } from 'modelui-core-runtime';/import { layout } from '..\/..\/modelui-core-runtime';/g" {} \;
 find . -type f -exec sed -i '' -e  "s/import { structs } from 'modelui-core-runtime';/import { structs } from '..\/..\/modelui-core-runtime';/g" {} \;
 find . -type f -exec sed -i '' -e  "s/import { util } from 'modelui-core-runtime';/import { util } from '..\/..\/modelui-core-runtime';/g" {} \;
-
-find . -name AppBase.js -maxdepth 1  -type f -exec sed -i '' -e  "s/import { layout } from 'modelui-core-runtime';/import { layout } from '.\/modelui-core-runtime';/g" {} \;
-
-
-
-find . -name *.js -maxdepth 1  -type f -exec sed -i '' -e  "s/import { structs } from 'modelui-core-runtime';/import { structs } from '..\/modelui-core-runtime';/g" {} \;
-find . -name *.js -maxdepth 1  -type f -exec sed -i '' -e  "s/import { util } from 'modelui-core-runtime';/import { util } from '..\/modelui-core-runtime';/g" {} \;
