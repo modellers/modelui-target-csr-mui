@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/modelui-core-runtime
 
 # testing
 /coverage
